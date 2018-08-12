@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistema;
+package Vista;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -15,11 +15,14 @@ import javafx.stage.Stage;
  * @author Anthony777
  */
 public class Sistema extends Application {
+    public static Stage mainStage;
     
     @Override
     public void start(Stage primaryStage) {
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root, 300, 250);        
+        mainStage = primaryStage;
+        PanelPrincipal p = new PanelPrincipal();
+        Scene scene = new Scene(p.getRoot(), 1500, 750);  
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Sistema");
         primaryStage.setScene(scene);
         primaryStage.show();
