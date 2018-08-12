@@ -27,12 +27,18 @@ CREATE TABLE Articulo (
 CREATE TABLE Inventario (
     idInventario varchar(50) NOT NULL,
     idLocal varchar(50) NOT NULL,
-    idArticulo varchar(50) NOT NULL,
-    cantidadArticulo INT NOT NULL,
 	isVisible BOOLEAN NOT NULL,
     PRIMARY KEY (idInventario)
 );
 
+CREATE TABLE InventarioStock (
+	idStock varchar(50) NOT NULL,
+    idInventario varchar(50) NOT NULL,
+    idArticulo varchar(50) NOT NULL,
+    cantidadArticulo INT NOT NULL,
+    isVisible BOOLEAN NOT NULL,
+    PRIMARY KEY(idStock)
+);
 CREATE TABLE Cliente (
     cedula varchar(50) NOT NULL,
     nombre varchar(50) NOT NULL,
@@ -68,4 +74,5 @@ CREATE TABLE ArticulosTransaccion (
     idArticulo varchar(50) NOT NULL,
 	isVisible BOOLEAN NOT NULL,
     PRIMARY KEY (idArticulosTransaccion)
+    
 );
