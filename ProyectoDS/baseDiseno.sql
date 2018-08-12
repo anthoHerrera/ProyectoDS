@@ -53,7 +53,7 @@ CREATE TABLE Empleado (
 );
 
 CREATE TABLE Transaccion (
-    idTransaccion auto_increment NOT NULL,
+    idTransaccion SERIAL NOT NULL,
     tipo varchar(50) NOT NULL,
     fecha DATE NOT NULL,
     idEmpleado varchar(50) NOT NULL,
@@ -63,8 +63,8 @@ CREATE TABLE Transaccion (
 );
 
 CREATE TABLE ArticulosTransaccion (
-    idArticulosTransaccion auto_increment NOT NULL,
-    idTransaccion auto_increment NOT NULL,
+    idArticulosTransaccion SERIAL NOT NULL,
+    idTransaccion SERIAL NOT NULL,
     idArticulo varchar(50) NOT NULL,
 	isVisible BOOLEAN NOT NULL,
     PRIMARY KEY (idArticulosTransaccion)
