@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistema;
+package Vista;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -14,15 +14,15 @@ import javafx.stage.Stage;
  *
  * @author JuanJose FS
  */
-public class PanelSuper {
+public class PanelVendedor {
     private Stage creacion;
     private Pane root;
     
-    public PanelSuper(){
+    public PanelVendedor(){
         root = new Pane();
         creacion = new Stage();
         creacion.setResizable(false);
-        creacion.setTitle("Interfaz SuperAdministrador");
+        creacion.setTitle("Interfaz Vendedor");
 
         creacion.initModality(Modality.WINDOW_MODAL);
         creacion.initOwner(Sistema.mainStage);
