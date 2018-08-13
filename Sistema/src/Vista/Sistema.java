@@ -21,7 +21,7 @@ public class Sistema extends Application {
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
         PanelPrincipal p = new PanelPrincipal();
-        Scene scene = new Scene(p.getRoot(), 1500, 750);  
+        Scene scene = new Scene(p.getRoot(), 1000, 750);  
         primaryStage.setResizable(false);
         primaryStage.setTitle("Sistema");
         primaryStage.setScene(scene);
