@@ -6,26 +6,26 @@
 package Vista;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.application.Platform;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
  * @author Anthony777
  */
 public class Sistema extends Application {
-    public static Stage mainStage;
     
     @Override
     public void start(Stage primaryStage) {
-        mainStage = primaryStage;
-        PanelPrincipal p = new PanelPrincipal();
-        Scene scene = new Scene(p.getRoot(), 1000, 750);  
-        primaryStage.setResizable(false);
-        primaryStage.setTitle("Sistema");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        SceneOrganizer organizer = new SceneOrganizer(primaryStage);
+        organizer.getWindow().setTitle("Sistema");
+        organizer.getWindow().setResizable(false);
+        organizer.getWindow().show();
+        organizer.getWindow().setOnCloseRequest((WindowEvent t) -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     /**

@@ -69,12 +69,8 @@ CREATE TABLE Empleado (
 );
 
 CREATE TABLE Transaccion (
-<<<<<<< HEAD
     idTransaccion SERIAL NOT NULL,
-=======
-    idTransaccion auto_increment NOT NULL,
     idLocal varchar(50) NOT NULL,
->>>>>>> 2109db0256af663c2a26019b7f729c4433071341
     tipo varchar(50) NOT NULL,
     fecha DATE NOT NULL,
     idEmpleado varchar(50) NOT NULL,

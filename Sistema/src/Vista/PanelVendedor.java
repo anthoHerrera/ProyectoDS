@@ -5,32 +5,36 @@
  */
 package Vista;
 
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author JuanJose FS
  */
 public class PanelVendedor {
-    private Stage creacion;
-    private Pane root;
+    private VBox root;
+    private HBox hbox;
+    private Button cotizacion, cliente, venta;
     
     public PanelVendedor(){
-        root = new Pane();
-        creacion = new Stage();
-        creacion.setResizable(false);
-        creacion.setTitle("Interfaz Vendedor");
+        root = new VBox();
+        setUp();
+    }
+    
+    private void setUp() {
+        hbox= new HBox();
+        cotizacion = new Button("Cotizacion");
+        cliente = new Button("Registrar cliente");
+        venta = new Button("Venta");
+        hbox.getChildren().addAll(cotizacion,cliente,venta);
+        root.getChildren().add(hbox);
+    }
 
-        creacion.initModality(Modality.WINDOW_MODAL);
-        creacion.initOwner(Sistema.mainStage);
-
-        Scene scene = new Scene(root, 1500, 750);
-        creacion.setScene(scene);
-
-        creacion.showAndWait();
+    public VBox getRoot() {
+        return root;
     }
     
 }

@@ -5,11 +5,10 @@
  */
 package Vista;
 
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -17,27 +16,13 @@ import javafx.stage.Stage;
  * @author JuanJose FS
  */
 public class PanelGerente {
-    private Stage creacion;
-    private Pane root;
+    private VBox root;
     private HBox hbox;
     private Button consultas, reportes;
     
     public PanelGerente(){
-        root = new Pane();
-        creacion = new Stage();
-        creacion.setResizable(false);
-        creacion.setTitle("Interfaz Gerente");
-
-        creacion.initModality(Modality.WINDOW_MODAL);
-        creacion.initOwner(Sistema.mainStage);
-
-        Scene scene = new Scene(root, 1500, 750);
-        creacion.setScene(scene);
-
+        root = new VBox();
         setUp();
-        
-        creacion.showAndWait();
-        
     }
     
     private void setUp(){
@@ -48,5 +33,11 @@ public class PanelGerente {
         root.getChildren().add(hbox);
         
     }
+
+    public VBox getRoot() {
+        return root;
+    }
+
+    
     
 }

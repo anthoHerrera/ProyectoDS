@@ -15,22 +15,14 @@ import javafx.stage.Stage;
  * @author JuanJose FS
  */
 public class PanelAdmin {
-    private Stage creacion;
     private Pane root;
     
     public PanelAdmin(){
         root = new Pane();
-        creacion = new Stage();
-        creacion.setResizable(false);
-        creacion.setTitle("Interfaz Administrador");
+    }
 
-        creacion.initModality(Modality.WINDOW_MODAL);
-        creacion.initOwner(Sistema.mainStage);
-
-        Scene scene = new Scene(root, 1500, 750);
-        creacion.setScene(scene);
-
-        creacion.showAndWait();
+    public Pane getRoot() {
+        return root;
     }
     
 }
