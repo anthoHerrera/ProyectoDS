@@ -42,5 +42,4 @@ public class Local {
         this.tipo = tipo;
     }
     
-    
 }

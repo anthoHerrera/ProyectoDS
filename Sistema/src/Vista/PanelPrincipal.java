@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -38,7 +37,6 @@ public class PanelPrincipal {
     public PanelPrincipal() {
         root = new VBox(20);
         setUp();
-        
     }
     
     private void setUp(){
@@ -102,8 +100,8 @@ public class PanelPrincipal {
         root.getChildren().addAll(contenedorUsuario,contenedorContraseña,login);
         
     }
-
-    public Pane getRoot() {
+   
+    public VBox getRoot() {
         return root;
         
     }
@@ -111,6 +109,5 @@ public class PanelPrincipal {
     public void setRoot(VBox root) {
         this.root = root;
     }
-
     
 }
