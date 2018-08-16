@@ -14,4 +14,7 @@ public class Ctes {
     public static final double APP_LH = 450;
     public static final double APP_WIDHT = 1000;
     public static final double APP_HEIGHT = 650;
+	
+	public static final int BUT_WIDTH = 240;
+	public static final int BUT_HEIGHT = 80;
 }
