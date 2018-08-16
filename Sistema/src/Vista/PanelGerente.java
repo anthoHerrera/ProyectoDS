@@ -5,32 +5,32 @@
  */
 package Vista;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 /**
  *
- * @author JuanJose FS
+ * @author Anthony777
  */
 public class PanelGerente {
     private VBox root;
-    private HBox hbox;
-    private Button consultas, reportes;
+    private Button articulos, ventas, clientes;
     
     public PanelGerente(){
-        root = new VBox();
+        root = new VBox(20);
         setUp();
     }
     
     private void setUp(){
-        hbox= new HBox();
-        consultas = new Button("Consultar productos");
-        reportes = new Button("Hacer reporte");
-        hbox.getChildren().addAll(consultas,reportes);
-        root.getChildren().add(hbox);
+        
+        articulos = new Button("Consultar reporte de articulos");
+        ventas = new Button("Consultar reporte de ventas");
+        clientes = new Button("Consultar reporte de clientes");
+        root.setStyle("-fx-background-color: lavender");
+        root.getChildren().addAll(articulos, ventas, clientes);
+        root.setAlignment(Pos.CENTER);
         
     }
 
