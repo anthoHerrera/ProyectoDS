@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
  *
  * @author gabpa
  */
-public class PanelSuper {
+public final class PanelSuper {
     private final VBox root;
 	private Button inventario, transacciones, bodega, salir;
 	private Label titulo;
@@ -55,7 +55,11 @@ public class PanelSuper {
 	
 	private void setupFunctButtons(){
 		
+		inventario.setOnAction(e->goToInventory());
 		salir.setOnAction(e->Platform.exit());
+	}
+	private void goToInventory(){
+		PanelInventario panel = new PanelInventario(this);
 	}
     public Pane getRoot() {
         return root;
