@@ -36,8 +36,6 @@ public class PanelGerente {
 
     public VBox getRoot() {
         return root;
-    }
-
-    
+    } 
     
 }

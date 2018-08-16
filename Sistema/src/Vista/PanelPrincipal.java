@@ -6,6 +6,10 @@
 package Vista;
 
 import Controlador.ControllerPrincipal;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +20,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -33,6 +39,7 @@ public class PanelPrincipal {
     private Label user;
     private Label passw;
     private ControllerPrincipal controlador;
+    private ImageView img;
     
     public PanelPrincipal() {
         root = new VBox(20);
@@ -41,7 +48,13 @@ public class PanelPrincipal {
     
     private void setUp(){
         controlador = new ControllerPrincipal();
-        
+        InputStream is;
+        try {
+            is = Files.newInputStream(Paths.get("Imagen/user.png"));
+            img = new ImageView(new Image(is, 200, 200, false, true));
+        } catch (IOException ex) {
+            Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         contenedorUsuario = new HBox(20);
         user = new Label("User:        ");
         usuario = new TextField();
@@ -96,8 +109,8 @@ public class PanelPrincipal {
          
         });
         root.setAlignment(Pos.CENTER);
-        root.setStyle("-fx-background-color: honeydew");
-        root.getChildren().addAll(contenedorUsuario,contenedorContraseña,login);
+        root.setStyle("-fx-background-color: lavender");
+        root.getChildren().addAll(img,contenedorUsuario,contenedorContraseña,login);
         
     }
    
