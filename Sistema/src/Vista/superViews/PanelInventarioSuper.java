@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package Vista.superViews;
 
+import Vista.superViews.PanelSuper;
 import Modelo.Ctes;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -22,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author gabpa
  */
-public final class PanelInventario {
+public final class PanelInventarioSuper {
 
     private final VBox root;
     private Button agregarObjeto, eliminarObjetos, modificarObjeto, buscarObjeto, regresar;
@@ -31,7 +32,7 @@ public final class PanelInventario {
     private Stage inventoryStage;
     private Scene scene;
 
-    public PanelInventario(PanelSuper panelsuper) {
+    public PanelInventarioSuper(PanelSuper panelsuper) {
         root = new VBox(20);
         this.panelsuper = panelsuper;
         setupPanes();

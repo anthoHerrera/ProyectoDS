@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package Vista.superViews;
 
 import Modelo.Ctes;
 import javafx.application.Platform;
@@ -36,7 +36,7 @@ public final class PanelSuper {
         root.setPadding(new Insets(20, 20, 20, 20));
 
         titulo = new Label("Hola Crack!");
-        titulo.setFont(new Font("Comic Sans", 40));
+        titulo.setFont(new Font("Comic Sans", 36));
 
         inventario = new Button("INVENTARIO");
         transacciones = new Button("TRANSACCIONES");
@@ -61,7 +61,7 @@ public final class PanelSuper {
     }
 
     private void goToInventory() {
-        PanelInventario panel = new PanelInventario(this);
+        PanelInventarioSuper panel = new PanelInventarioSuper(this);
     }
 
     public Pane getRoot() {

@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Vista.superViews.PanelSuper;
 import Modelo.Ctes;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
