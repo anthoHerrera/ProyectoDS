@@ -28,6 +28,7 @@ import javafx.scene.layout.VBox;
 /**
  *
  * @author JuanJose FS
+ * @author Anthony777
  */
 public class PanelPrincipal {
     private VBox root;
@@ -94,14 +95,7 @@ public class PanelPrincipal {
                             break;
                     }
                 }else {
-                    Alert alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error Login");
-                    alert.setHeaderText("Se ha producido un error");
-                    alert.setContentText("Usuario o contraseña incorrectos");
-                    alert.showAndWait();
-                    usuario.setText("");
-                    contraseña.setText("");
-                    
+                    showError();                    
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,6 +115,16 @@ public class PanelPrincipal {
 
     public void setRoot(VBox root) {
         this.root = root;
+    }
+    
+    private void showError() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error Login");
+        alert.setHeaderText("Se ha producido un error");
+        alert.setContentText("Usuario o contraseña incorrectos");
+        alert.showAndWait();
+        usuario.setText("");
+        contraseña.setText("");
     }
     
 }

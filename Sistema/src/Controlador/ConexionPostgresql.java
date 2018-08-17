@@ -20,14 +20,8 @@ public class ConexionPostgresql {
 
     public ConexionPostgresql() {
         try {
-<<<<<<< HEAD
-            cnx = DriverManager.getConnection("jdbc:postgresql://localhost:1234/lineablancasa"
-					,"postgres","889juanjo");
-=======
-            cnx = DriverManager.getConnection("jdbc:postgresql://localhost:5433/lineablancasa"
-					,"postgres","gabriel22samanes2");
->>>>>>> a38dcffb4d86977b41274ebe6ba81e0441c21bd8
-            System.out.println("conectado");
+            cnx = DriverManager.getConnection("jdbc:postgresql://localhost/lineablancasa",
+                     "postgres", "root");
         } catch (SQLException ex) {
             Logger.getLogger(ConexionPostgresql.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,5 +30,5 @@ public class ConexionPostgresql {
     public Connection getCnx() {
         return cnx;
     }
-    
+
 }

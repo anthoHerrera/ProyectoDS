@@ -31,21 +31,25 @@ public class SceneOrganizer {
         window.setTitle("Sistema");
         window.setScene(scenePrincipal);
     }
+    
     public static void setupSceneSuper() {
         sceneSuper = new Scene(new PanelSuper().getRoot(),Ctes.APP_WIDHT,Ctes.APP_HEIGHT);
         window.setTitle("Interfaz SuperAdministrador");
         window.setScene(sceneSuper);
     }
+    
     public static void setupSceneGerente() {
         sceneGerente = new Scene(new PanelGerente().getRoot(),Ctes.APP_WIDHT,Ctes.APP_HEIGHT);
         window.setTitle("Interfaz Gerente");
         window.setScene(sceneGerente);
     }
+    
     public static void setupSceneAdmin() {
         sceneAdmin = new Scene(new PanelAdmin().getRoot(),Ctes.APP_WIDHT,Ctes.APP_HEIGHT);
         window.setTitle("Interfaz Administrador");
         window.setScene(sceneAdmin);
     }
+    
     public static void setupSceneVendedor() {
         sceneVendedor = new Scene(new PanelVendedor().getRoot(),Ctes.APP_WIDHT,Ctes.APP_HEIGHT);
         window.setTitle("Interfaz Vendedor");
