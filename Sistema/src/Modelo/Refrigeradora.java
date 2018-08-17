@@ -14,9 +14,13 @@ public class Refrigeradora extends ArticuloLineaBlanca{
     private int capacidad;
     private String filtroAgua;
 
-    public Refrigeradora(String nombre, String marca) {
+	public Refrigeradora(){
+		
+	}
+	
+    /*public Refrigeradora(String nombre, String marca) {
         super(nombre, marca);
-    }
+    }*/
 
     public int getCantidadPuertas() {
         return cantidadPuertas;

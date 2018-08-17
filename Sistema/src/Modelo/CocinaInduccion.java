@@ -15,9 +15,12 @@ public class CocinaInduccion extends ArticuloLineaBlanca{
     private int inductores;
     private String voltaje;
 
-    public CocinaInduccion(String nombre, String marca) {
+	public CocinaInduccion(){
+		
+	}
+    /*public CocinaInduccion(String nombre, String marca) {
         super(nombre, marca);
-    }
+    }*/
 
     public String getTamano() {
         return tamano;

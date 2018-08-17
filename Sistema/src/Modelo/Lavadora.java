@@ -10,18 +10,15 @@ package Modelo;
  * @author JuanJose FS
  */
 public class Lavadora extends ArticuloLineaBlanca{
-    private String capacidad;
+    private int capacidad;
     private int nivelesTemperatura;
-    
-    public Lavadora(String nombre, String marca) {
-        super(nombre, marca);
-    }
 
-    public String getCapacidad() {
+
+    public Integer getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(String capacidad) {
+    public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
 
