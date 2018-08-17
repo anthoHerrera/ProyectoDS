@@ -37,12 +37,10 @@ public final class PanelConsultaClientes {
     private ControllerGerente controlador;
     private ObservableList<Cliente> clientes;
     private TableView<Cliente> tabla;
-    private final PanelGerente manager;
     private Stage clientStage;
     private Scene scene;
 
-    public PanelConsultaClientes(PanelGerente manager) {
-        this.manager = manager;
+    public PanelConsultaClientes() {
         root = new VBox(10);
         setPanes();
         setFunctButtons();
