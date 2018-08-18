@@ -20,7 +20,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -29,17 +31,19 @@ import javafx.stage.Stage;
  *
  * @author Anthony777
  */
-public final class PanelConsultaArticulos {
+public final class PanelBusquedaArticulos {
     private final VBox root;
-    private Label titulo;
-    private Button regresar;
+    private HBox hbox;
+    private Label titulo,ingreso;
+    private TextField texto;
+    private Button regresar,boton;
     private ControllerAdmin controlador;
     private ObservableList<ArticuloLineaBlanca> articulos;
     private TableView<ArticuloLineaBlanca> tabla;
     private Stage articuloStage;
     private Scene scene;
 
-    public PanelConsultaArticulos() {
+    public PanelBusquedaArticulos() {
         root = new VBox(10);
         setUp();
         setUpButtons();
@@ -49,7 +53,7 @@ public final class PanelConsultaArticulos {
     
     public void setStage() {
         articuloStage = new Stage();
-        scene = new Scene(this.getRoot(), Ctes.APP_WIDHT - 200, Ctes.APP_HEIGHT - 250);
+        scene = new Scene(this.getRoot(), Ctes.APP_WIDHT, Ctes.APP_HEIGHT - 150);
         articuloStage.setScene(scene);
         articuloStage.setTitle("Consulta Productos");
         articuloStage.setResizable(false);
@@ -61,11 +65,29 @@ public final class PanelConsultaArticulos {
         root.setPadding(new Insets(20, 20, 20, 20));
         controlador = new ControllerAdmin();
         tabla = new TableView<>();
+        
+        hbox = new HBox(5);
+        boton = new Button("Buscar");
+        texto = new TextField();
+        ingreso = new Label("Ingrese el producto a buscar");
+        hbox.getChildren().addAll(ingreso,texto,boton);
         titulo = new Label("Productos");
         titulo.setFont(new Font("Cambria", 40));
+        generarTabla("select * from articulo");
+        regresar = new Button("REGRESAR");
 
+        regresar.setPrefSize(Ctes.BUT_WIDTH + 60, Ctes.BUT_HEIGHT - 40);
+        
+        root.setStyle("-fx-background-color: lavender");
+        root.setAlignment(Pos.CENTER);
+        root.getChildren().addAll(titulo,hbox,tabla,regresar);
+
+    }
+    
+    private void generarTabla(String comando){
+        
         try {
-            articulos = controlador.consultaArticulos();
+            articulos = controlador.consultaArticulos(comando);
             if (articulos != null) {
                 tabla.setItems(articulos);
                 tabla.setEditable(false);
@@ -135,27 +157,40 @@ public final class PanelConsultaArticulos {
                 showError();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelConsultaArticulos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        regresar = new Button("REGRESAR");
-
-        regresar.setPrefSize(Ctes.BUT_WIDTH + 60, Ctes.BUT_HEIGHT - 40);
-
-        root.setStyle("-fx-background-color: lavender");
-        root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(titulo,tabla,regresar);
-
+            Logger.getLogger(PanelBusquedaArticulos.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }
-    
+            
     public VBox getRoot() {
         return root;
     }
     
     private void setUpButtons() {
         regresar.setOnAction(e -> articuloStage.close());
+        boton.setOnAction(e-> manejarBuscar());
     }
     
+    private void manejarBuscar(){
+        if(!texto.getText().isEmpty()){
+            if(texto.getText().equals("cocina")){
+                root.getChildren().removeAll(titulo,hbox,tabla,regresar);
+                generarTabla("select * from articulo where nombre like 'Cocina%'");
+                root.getChildren().addAll(titulo,hbox,tabla,regresar);   
+            }
+            else if(texto.getText().equals("lavadora")){
+                root.getChildren().removeAll(titulo,hbox,tabla,regresar);
+                generarTabla("select * from articulo where nombre like 'Lavadora%'");
+                root.getChildren().addAll(titulo,hbox,tabla,regresar);   
+            }
+            else if(texto.getText().equals("refrigeradora")){
+                root.getChildren().removeAll(titulo,hbox,tabla,regresar);
+                generarTabla("select * from articulo where nombre like 'Refrigeradora%'");
+                root.getChildren().addAll(titulo,hbox,tabla,regresar);   
+            }
+            
+        }
+        
+    }
     private void showError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");

@@ -22,6 +22,7 @@ public class RDE235UWABBuilder extends RefrigeradoraBuilder{
     public void buildPuertas() {
         fridge.setCantidadPuertas(2);
         fridge.setCapacidad(25);
+        fridge.setPrecio(1235);
     }
 
     @Override
