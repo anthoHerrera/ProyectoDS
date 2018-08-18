@@ -9,7 +9,7 @@ package Builders;
  *
  * @author gabpa
  */
-public class LavadoraWMC1786SXWW3Builder extends ConstructorLavadoras{
+public class LavadoraWMC1786SXWW3Builder extends LavadoraBuilder{
 	
 	@Override
 	public void construirNucleo() {

@@ -11,9 +11,9 @@ import Modelo.Lavadora;
  *
  * @author gabpa
  */
-public class LavadoraDirector {
+public class DirectorLavadora {
 	
-	private ConstructorLavadoras constructor;
+	private LavadoraBuilder constructor;
 	
 	public void construirLavadora(){
 		constructor.crearLavadora();
@@ -23,7 +23,7 @@ public class LavadoraDirector {
 		
 	}
 	
-	public void setConstructorLavadoras(ConstructorLavadoras cons){
+	public void setConstructorLavadoras(LavadoraBuilder cons){
 		this.constructor = cons;
 	}
 	
