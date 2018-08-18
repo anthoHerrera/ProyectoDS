@@ -62,9 +62,9 @@ public class AgregarObjetoView {
 		
 		comboBoxito = new ComboBox();
 		comboBoxito.getItems().addAll(
-			"LavadoraLMA70200WGAB0",
-			"LavadoraLMD75B0",
-			"LavadoraWMC1786SXWW"
+			"Lavadora LMA70200WGAB0",
+			"Lavadora LMD75B0",
+			"Lavadora WMC1786SXWW3"
 		);
 		comboBoxito.setValue("LavadoraLMD75B0");
 		
@@ -120,18 +120,18 @@ public class AgregarObjetoView {
 		DirectorLavadora director = new DirectorLavadora();
 		Lavadora lavadora = null;
 		
-		String modelo = comboBoxito.getSelectionModel().toString();
+		String modelo = comboBoxito.getValue().toString();
 		switch(modelo){
 			
-			case "LavadoraLMA70200WGAB0":
+			case "Lavadora LMA70200WGAB0":
 				director.setConstructorLavadoras(new LavadoraLMA70200WGAB0Builder() );
 				director.construirLavadora();
 				lavadora = director.getLavadora();
-			case "LavadoraLMD75B0":
+			case "Lavadora LMD75B0":
 				director.setConstructorLavadoras( new LavadoraLMD75B0Builder());
 				director.construirLavadora();
 				lavadora = director.getLavadora();
-			case "LavadoraWMC1786SXWW3":
+			case "Lavadora WMC1786SXWW3":
 				director.setConstructorLavadoras(new LavadoraWMC1786SXWW3Builder() );
 				director.construirLavadora();
 				lavadora = director.getLavadora();
@@ -139,34 +139,53 @@ public class AgregarObjetoView {
 		
 		//IMPLEMENT CODE DE INSERCION A LA BASE
 		ConexionPostgresql conexion = new ConexionPostgresql();
-		String query = "Select *" +
+		String query = "select * " +
 					"from inventariostock \n" +
 					"join inventario On inventariostock.idinventario = inventario.idinventario\n" +
-					"where inventario.idlocal = 'matriz'";
+					"where inventario.idlocal like ?";
 		PreparedStatement statements = conexion.getCnx().
 			prepareStatement(query);
+		statements.setString(1, comboLocales.getValue().toString());
 		ResultSet result = statements.executeQuery();
-		
+
 		while(result.next()){
-			String stock = result.getString("idStock");
-			String inv = result.getString("idInventario");
-			String idArt = result.getString("idArticulo");
-			Integer cantArt = result.getInt("cantidadArticulo");
+			//String inv = result.getString("idInventario");
+			String idArtTabla = result.getString("idarticulo");
+			Integer cantArt = result.getInt("cantidadarticulo");
+			String idArtIngresado = this.getArticuloId(modelo);
 			
-			if(idArt.equals("la2")){////////////////xd
-				//AUMENTO LA CANTARTICULO Y MODIFICO LA TABLA
+			
+			if(idArtTabla.equals(idArtIngresado)){
 				cantArt++;
 				PreparedStatement insertStatement = conexion.getCnx().
 					prepareStatement("UPDATE inventariostock\n"
 								+ "SET cantidadarticulo = ?\n"
 							+ "WHERE idarticulo like ? ");
 				insertStatement.setInt(1, cantArt);
-				insertStatement.setString(2, idArt);
+				insertStatement.setString(2, idArtTabla);
 				insertStatement.execute();
-			}	
+				System.out.println("cambio algo xd");
+				return;
+			}
+			
 		}
-		System.out.println("termino todo xd");
+		System.out.println("no cambio nada");
 						
 	}
 	
+	private String getArticuloId(String modelo) throws SQLException{
+
+		String id = null;
+		ConexionPostgresql conexion = new ConexionPostgresql();
+		String query = "Select idarticulo\n" +
+					"from articulo \n" +
+					"where nombre = ?";
+		PreparedStatement statements = conexion.getCnx().
+			prepareStatement(query);
+		statements.setString(1, modelo);
+		ResultSet result = statements.executeQuery();
+		result.next();
+		id = result.getString("idarticulo");
+		return id;
+	}
 }
