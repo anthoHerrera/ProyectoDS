@@ -116,13 +116,8 @@ public class AgregarObjetoView {
 		stage.showAndWait();
 	}
 	
-<<<<<<< HEAD
 	private void validateSelection() throws SQLException{
-		LavadoraDirector director = new LavadoraDirector();
-=======
-	private void validateSelection(){
 		DirectorLavadora director = new DirectorLavadora();
->>>>>>> 39add9db1b3c32fb2c8f5d797766b79bbdbad88c
 		Lavadora lavadora = null;
 		
 		String modelo = comboBoxito.getSelectionModel().toString();
@@ -171,9 +166,7 @@ public class AgregarObjetoView {
 			}	
 		}
 		System.out.println("termino todo xd");
-				
-				
+						
 	}
-	
 	
 }
