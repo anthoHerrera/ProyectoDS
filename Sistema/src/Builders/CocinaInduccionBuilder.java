@@ -5,7 +5,7 @@
  */
 package Builders;
 
-import Modelo.CocinaInduccion;
+import Modelo.ArticuloLineaBlanca;
 import Modelo.CocinaInduccion;
 
 /**

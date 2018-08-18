@@ -9,7 +9,7 @@ package Builders;
  *
  * @author gabpa
  */
-public class LavadoraLMA70200WGAB0Builder extends ConstructorLavadoras{
+public class LavadoraLMA70200WGAB0Builder extends LavadoraBuilder{
 
 	@Override
 	public void construirNucleo() {

@@ -5,6 +5,8 @@
  */
 package Builders;
 
+import Modelo.CocinaInduccion;
+
 /**
  *
  * @author JuanJose FS

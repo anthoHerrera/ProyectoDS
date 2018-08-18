@@ -5,6 +5,8 @@
  */
 package Builders;
 
+import Modelo.CocinaInduccion;
+
 /**
  *
  * @author JuanJose FS
@@ -20,15 +22,15 @@ public class GinebraBuilder extends CocinaInduccionBuilder{
 
     @Override
     public void buildInductores() {
-        cocina.setInductores(4);
-        cocina.setTamano("mediana");
+        ((CocinaInduccion)cocina).setInductores(4);
+        ((CocinaInduccion)cocina).setTamano("mediana");
         cocina.setPrecio(850);
     }
 
     @Override
     public void buildParteElectrica() {
-        cocina.setVoltaje("220 v");
-        cocina.setPotenciaTotal("9246 watts");
+        ((CocinaInduccion)cocina).setVoltaje("220 v");
+        ((CocinaInduccion)cocina).setPotenciaTotal("9246 watts");
     }
     
 }

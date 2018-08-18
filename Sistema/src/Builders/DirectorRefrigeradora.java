@@ -14,7 +14,7 @@ import Modelo.Refrigeradora;
 public class DirectorRefrigeradora {
     private RefrigeradoraBuilder fridgeBuilder;
     
-    public void DirectorRefrigeradora(){
+    public void construirRefrigeradora(){
         fridgeBuilder.crearRefrigeradora();
         fridgeBuilder.buildModel();
         fridgeBuilder.buildFiltros();

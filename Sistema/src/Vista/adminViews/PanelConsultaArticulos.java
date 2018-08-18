@@ -51,7 +51,7 @@ public final class PanelConsultaArticulos {
         articuloStage = new Stage();
         scene = new Scene(this.getRoot(), Ctes.APP_WIDHT - 200, Ctes.APP_HEIGHT - 250);
         articuloStage.setScene(scene);
-        articuloStage.setTitle("Consulta clientes");
+        articuloStage.setTitle("Consulta Productos");
         articuloStage.setResizable(false);
         articuloStage.showAndWait();
     }
@@ -61,7 +61,7 @@ public final class PanelConsultaArticulos {
         root.setPadding(new Insets(20, 20, 20, 20));
         controlador = new ControllerAdmin();
         tabla = new TableView<>();
-        titulo = new Label("Clientes");
+        titulo = new Label("Productos");
         titulo.setFont(new Font("Cambria", 40));
 
         try {
@@ -70,26 +70,67 @@ public final class PanelConsultaArticulos {
                 tabla.setItems(articulos);
                 tabla.setEditable(false);
                 
-                TableColumn id = new TableColumn("ID");
-                id.setMinWidth(200);
-                id.setCellValueFactory(
-                        new PropertyValueFactory<>("ID"));
-                
                 TableColumn nombre = new TableColumn("Nombre");
                 nombre.setMinWidth(200);
                 nombre.setCellValueFactory(
-                        new PropertyValueFactory<>("Nombre"));
+                        new PropertyValueFactory<>("nombre"));
                 
                 TableColumn descripcion = new TableColumn("Descripcion");
                 descripcion.setMinWidth(200);
                 descripcion.setCellValueFactory(
-                        new PropertyValueFactory<>("Descripcion"));
+                        new PropertyValueFactory<>("descripcion"));
                 
                 TableColumn marca = new TableColumn("Marca");
                 marca.setMinWidth(200);
                 marca.setCellValueFactory(
-                        new PropertyValueFactory<>("Marca"));
-                tabla.getColumns().addAll(id,nombre,descripcion,marca);
+                        new PropertyValueFactory<>("marca"));
+                
+                TableColumn precio = new TableColumn("Precio");
+                precio.setMinWidth(200);
+                precio.setCellValueFactory(
+                        new PropertyValueFactory<>("precio"));
+                
+                TableColumn tamano = new TableColumn("Tamano");
+                tamano.setMinWidth(200);
+                tamano.setCellValueFactory(
+                        new PropertyValueFactory<>("tamano"));
+                
+                TableColumn potencia = new TableColumn("PotenciaTotal");
+                potencia.setMinWidth(200);
+                potencia.setCellValueFactory(
+                        new PropertyValueFactory<>("potenciaTotal"));
+                
+                TableColumn inductores = new TableColumn("Inductores");
+                inductores.setMinWidth(200);
+                inductores.setCellValueFactory(
+                        new PropertyValueFactory<>("inductores"));
+                
+                TableColumn voltaje = new TableColumn("Voltaje");
+                voltaje.setMinWidth(200);
+                voltaje.setCellValueFactory(
+                        new PropertyValueFactory<>("voltaje"));
+                
+                TableColumn puertas = new TableColumn("Puertas");
+                puertas.setMinWidth(200);
+                puertas.setCellValueFactory(
+                        new PropertyValueFactory<>("cantidadPuertas"));
+                
+                TableColumn capacidad = new TableColumn("Capacidad");
+                capacidad.setMinWidth(200);
+                capacidad.setCellValueFactory(
+                        new PropertyValueFactory<>("capacidad"));
+                
+                TableColumn filtro = new TableColumn("Filtro Agua");
+                filtro.setMinWidth(200);
+                filtro.setCellValueFactory(
+                        new PropertyValueFactory<>("filtroAgua"));
+                
+                TableColumn temp = new TableColumn("Niveles Temperatura");
+                temp.setMinWidth(200);
+                temp.setCellValueFactory(
+                        new PropertyValueFactory<>("nivelesTemperatura"));
+                
+                tabla.getColumns().addAll(nombre,descripcion,marca,precio,tamano,potencia,inductores,voltaje,puertas,capacidad,filtro,temp);
             }else {
                 showError();
             }

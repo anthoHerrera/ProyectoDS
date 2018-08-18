@@ -11,7 +11,7 @@ import Modelo.Lavadora;
  *
  * @author gabpa
  */
-public abstract class ConstructorLavadoras {
+public abstract class LavadoraBuilder {
 	
 	protected Lavadora lavadora;
 	

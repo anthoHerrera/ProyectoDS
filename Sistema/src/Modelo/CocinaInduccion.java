@@ -5,8 +5,6 @@
  */
 package Modelo;
 
-import Modelo.ArticuloLineaBlanca;
-
 /**
  *
  * @author JuanJose FS

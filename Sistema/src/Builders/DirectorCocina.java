@@ -5,6 +5,7 @@
  */
 package Builders;
 
+import Modelo.ArticuloLineaBlanca;
 import Modelo.CocinaInduccion;
 
 /**
@@ -15,7 +16,7 @@ public class DirectorCocina {
 
     private CocinaInduccionBuilder cocinaBuilder;
 
-    public void DirectorCocina() {
+    public void construirCocina() {
         cocinaBuilder.crearCocinaInduccion();
         cocinaBuilder.buildModel();
         cocinaBuilder.buildParteElectrica();
