@@ -9,7 +9,13 @@ import Builders.LavadoraDirector;
 import Builders.LavadoraLMA70200WGAB0Builder;
 import Builders.LavadoraLMD75B0Builder;
 import Builders.LavadoraWMC1786SXWW3Builder;
+import Controlador.ConexionPostgresql;
 import Modelo.Lavadora;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -88,7 +94,14 @@ public class AgregarObjetoView {
 		
 		contenedorBotones.getChildren().addAll(agregar,cerrar);
 		
-		agregar.setOnAction(e->validateSelection());
+		agregar.setOnAction(e->{
+			try {
+				validateSelection();
+			} catch (SQLException ex) {
+				Logger.getLogger(AgregarObjetoView.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		});
+		
 		cerrar.setOnAction(e->stage.close());
 		
 		root.getChildren().add(contenedorBotones);
@@ -103,7 +116,7 @@ public class AgregarObjetoView {
 		stage.showAndWait();
 	}
 	
-	private void validateSelection(){
+	private void validateSelection() throws SQLException{
 		LavadoraDirector director = new LavadoraDirector();
 		Lavadora lavadora = null;
 		
@@ -125,7 +138,36 @@ public class AgregarObjetoView {
 		}
 		
 		//IMPLEMENT CODE DE INSERCION A LA BASE
+		ConexionPostgresql conexion = new ConexionPostgresql();
+		String query = "Select *" +
+					"from inventariostock \n" +
+					"join inventario On inventariostock.idinventario = inventario.idinventario\n" +
+					"where inventario.idlocal = 'matriz'";
+		PreparedStatement statements = conexion.getCnx().
+			prepareStatement(query);
+		ResultSet result = statements.executeQuery();
 		
+		while(result.next()){
+			String stock = result.getString("idStock");
+			String inv = result.getString("idInventario");
+			String idArt = result.getString("idArticulo");
+			Integer cantArt = result.getInt("cantidadArticulo");
+			
+			if(idArt.equals("la2")){////////////////xd
+				//AUMENTO LA CANTARTICULO Y MODIFICO LA TABLA
+				cantArt++;
+				PreparedStatement insertStatement = conexion.getCnx().
+					prepareStatement("UPDATE inventariostock\n"
+								+ "SET cantidadarticulo = ?\n"
+							+ "WHERE idarticulo like ? ");
+				insertStatement.setInt(1, cantArt);
+				insertStatement.setString(2, idArt);
+				insertStatement.execute();
+			}	
+		}
+		System.out.println("termino todo xd");
+				
+				
 	}
 	
 	
