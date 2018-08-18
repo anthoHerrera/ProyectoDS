@@ -14,20 +14,21 @@ public class GinebraBuilder extends CocinaInduccionBuilder{
      @Override
     public void buildModel() {
         cocina.setNombre("Cocina de induccion Ginebra");
-        cocina.setMarca("Whirpool");
-        cocina.setDescripcion("Cocina de induccion ahorradora");
+        cocina.setMarca("Indurama");
+        cocina.setDescripcion("Alto: 94 cm Ancho: 80 cm Profundidad: 58 cm");
     }
 
     @Override
     public void buildInductores() {
-        cocina.setInductores(3);
-        cocina.setTamano("8 pulgadas");
+        cocina.setInductores(4);
+        cocina.setTamano("mediana");
+        cocina.setPrecio(850);
     }
 
     @Override
     public void buildParteElectrica() {
-        cocina.setVoltaje("100 volteos");
-        cocina.setPotenciaTotal("1000 Wt");
+        cocina.setVoltaje("220 v");
+        cocina.setPotenciaTotal("9246 watts");
     }
     
 }

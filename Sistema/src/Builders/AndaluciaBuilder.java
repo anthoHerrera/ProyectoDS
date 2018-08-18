@@ -14,20 +14,21 @@ public class AndaluciaBuilder extends CocinaInduccionBuilder{
     @Override
     public void buildModel() {
         cocina.setNombre("Cocina de induccion Andalucia");
-        cocina.setMarca("Mabe");
-        cocina.setDescripcion("Cocina de induccion ultimo modelo");
+        cocina.setMarca("Indurama");
+        cocina.setDescripcion("Alto 94cm Ancho 60cm Profundidad 58cm");
     }
 
     @Override
     public void buildInductores() {
-        cocina.setInductores(2);
-        cocina.setTamano("10 pulgadas");
+        cocina.setInductores(4);
+        cocina.setTamano("mediana");
+        cocina.setPrecio(574);
     }
 
     @Override
     public void buildParteElectrica() {
-        cocina.setVoltaje("80 volteos");
-        cocina.setPotenciaTotal("1000 Wt");
+        cocina.setVoltaje("220 v");
+        cocina.setPotenciaTotal("8240 watts");
     }
     
 }

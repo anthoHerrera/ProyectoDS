@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.ArticuloLineaBlanca;
 import Modelo.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,23 +18,23 @@ import javafx.collections.ObservableList;
  *
  * @author JuanJose FS
  */
-public class ControllerSuper {
+public class ControllerAdmin {
     private final ConexionPostgresql cnx;
 
-    public ControllerSuper() {
+    public ControllerAdmin() {
         this.cnx = new ConexionPostgresql();
     }
-    public ObservableList<Cliente> consultaProductos() throws SQLException {
-        ObservableList clientes = null;
+    public ObservableList<ArticuloLineaBlanca> consultaArticulos() throws SQLException {
+        ObservableList productos = null;
         ArrayList<Cliente> c = new ArrayList<>();
-        PreparedStatement statement = cnx.getCnx().prepareStatement("select * from cliente");
+        PreparedStatement statement = cnx.getCnx().prepareStatement("select * from articulo");
         ResultSet result = statement.executeQuery();
         while(result.next()) {
             Cliente client = new Cliente(result.getString("cedula"), result.getString("nombre"), 
                     result.getString("cedula"), result.getBoolean("isVisible"));
             c.add(client);
         }
-        clientes = FXCollections.observableArrayList(c);
-        return clientes;
+        productos = FXCollections.observableArrayList(c);
+        return productos;
     }
 }
