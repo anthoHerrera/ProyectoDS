@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.ConexionPostgresql;
+import Modelo.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -58,7 +59,7 @@ public class CrearCliente {
         setHBoxes();
         
         crear = new Button("Ingresar");
-        crear.setOnAction(e->ingresarCliente());
+        crear.setOnAction(e->ingresarCliente(crearCliente()));
         root.getChildren().add(crear);
         
         
@@ -100,14 +101,14 @@ public class CrearCliente {
         lblTelefono = new Label("Telefono:");
     }
     
-    public void ingresarCliente() {
+    public void ingresarCliente(Cliente cliente) {
         conexion = new ConexionPostgresql();
         try {
             PreparedStatement st = conexion.getCnx().prepareStatement("INSERT INTO cliente (cedula, nombre, telefono, isvisible) VALUES (?, ?, ?, ?)");
-            st.setString(1, cedula.getText());
-            st.setString(2, nombre.getText());
-            st.setString(3, telefono.getText());
-            st.setBoolean(4, true);
+            st.setString(1, cliente.getCedula());
+            st.setString(2, cliente.getNombre());
+            st.setString(3, cliente.getTelefono());
+            st.setBoolean(4, cliente.isIsVisible());
             st.executeUpdate();
             st.close();
             crearCliente.close();
@@ -116,5 +117,9 @@ public class CrearCliente {
         }
         
         
+    }
+    
+    public Cliente crearCliente(){
+        return new Cliente(cedula.getText(), nombre.getText(),telefono.getText(), true);
     }
 }

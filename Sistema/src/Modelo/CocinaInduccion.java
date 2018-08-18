@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import Modelo.ArticuloLineaBlanca;
+
 /**
  *
  * @author JuanJose FS
@@ -14,13 +16,6 @@ public class CocinaInduccion extends ArticuloLineaBlanca{
     private String potenciaTotal;
     private int inductores;
     private String voltaje;
-
-	public CocinaInduccion(){
-		
-	}
-    /*public CocinaInduccion(String nombre, String marca) {
-        super(nombre, marca);
-    }*/
 
     public String getTamano() {
         return tamano;

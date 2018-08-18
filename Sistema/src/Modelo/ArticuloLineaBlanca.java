@@ -13,11 +13,8 @@ public class ArticuloLineaBlanca {
     protected String nombre;
     protected String descripcion;
     protected String marca;
-	protected int precio;
+    protected int precio;
 	
-	public ArticuloLineaBlanca(){
-		
-	}
 
     public String getNombre() {
         return nombre;
@@ -43,11 +40,11 @@ public class ArticuloLineaBlanca {
         this.marca = marca;
     }
 
-	public int getPrecio() {
+    public int getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(int precio) {
+    public void setPrecio(int precio) {
 		this.precio = precio;
 	}
     
