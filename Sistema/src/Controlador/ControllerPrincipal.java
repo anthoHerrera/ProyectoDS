@@ -33,4 +33,6 @@ public class ControllerPrincipal {
         }
         return rol;
     }
+	
+	
 }

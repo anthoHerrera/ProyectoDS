@@ -56,12 +56,8 @@ public final class PanelSuper {
 
     private void setupFunctButtons() {
 
-        inventario.setOnAction(e -> goToInventory());
+        inventario.setOnAction(e -> new PanelInventarioSuper(this));
         salir.setOnAction(e -> Platform.exit());
-    }
-
-    private void goToInventory() {
-        PanelInventarioSuper panel = new PanelInventarioSuper(this);
     }
 
     public Pane getRoot() {

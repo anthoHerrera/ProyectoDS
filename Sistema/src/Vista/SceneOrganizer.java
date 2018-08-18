@@ -37,6 +37,7 @@ public class SceneOrganizer {
         sceneSuper = new Scene(new PanelSuper().getRoot(),Ctes.APP_WIDHT,Ctes.APP_HEIGHT);
         window.setTitle("Interfaz SuperAdministrador");
         window.setScene(sceneSuper);
+		
     }
     
     public static void setupSceneGerente() {
