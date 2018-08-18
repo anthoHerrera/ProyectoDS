@@ -9,6 +9,7 @@ package Builders;
  *
  * @author gabpa
  */
+
 public class LavadoraLMD75B0Builder extends LavadoraBuilder{
 	
 	@Override

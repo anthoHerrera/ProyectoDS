@@ -5,9 +5,7 @@
  */
 package Vista.superViews;
 
-import Vista.superViews.PanelSuper;
 import Modelo.Ctes;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -74,7 +72,7 @@ public final class PanelInventarioSuper {
     }
 
     private void setupFunctButtons() {
-        agregarObjeto.setOnAction(e -> showAlert());
+        agregarObjeto.setOnAction(e -> new AgregarObjetoView());
         eliminarObjetos.setOnAction(e -> showAlert());
         modificarObjeto.setOnAction(e -> showAlert());
         buscarObjeto.setOnAction(e -> showAlert());
