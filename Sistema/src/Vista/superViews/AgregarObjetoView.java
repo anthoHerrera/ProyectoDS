@@ -5,7 +5,7 @@
  */
 package Vista.superViews;
 
-import Builders.LavadoraDirector;
+import Builders.DirectorLavadora;
 import Builders.LavadoraLMA70200WGAB0Builder;
 import Builders.LavadoraLMD75B0Builder;
 import Builders.LavadoraWMC1786SXWW3Builder;
@@ -104,7 +104,7 @@ public class AgregarObjetoView {
 	}
 	
 	private void validateSelection(){
-		LavadoraDirector director = new LavadoraDirector();
+		DirectorLavadora director = new DirectorLavadora();
 		Lavadora lavadora = null;
 		
 		String modelo = comboBoxito.getSelectionModel().toString();
