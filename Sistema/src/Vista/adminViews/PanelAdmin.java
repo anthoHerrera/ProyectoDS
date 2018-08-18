@@ -23,7 +23,7 @@ import javafx.scene.text.Font;
 public final class PanelAdmin {
 
     private final VBox root;
-    private Button inventario, transacciones, bodega, salir;
+    private Button inventario, transacciones, salir;
     private Label titulo;
 
     public PanelAdmin() {
@@ -41,7 +41,7 @@ public final class PanelAdmin {
 
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: lavender");
-        root.getChildren().addAll(titulo, inventario, transacciones, bodega, salir);
+        root.getChildren().addAll(titulo, inventario, transacciones, salir);
 
     }
 
@@ -49,12 +49,10 @@ public final class PanelAdmin {
         
         inventario = new Button("PRODUCTOS");
         transacciones = new Button("VENTAS");
-        bodega = new Button("BODEGA");
         salir = new Button("CERRAR SESION");
 
         inventario.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         transacciones.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
-        bodega.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         salir.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
 
         inventario.setOnAction(e -> new PanelInventarioAdmin());

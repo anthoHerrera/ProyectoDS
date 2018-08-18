@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 public final class PanelInventarioAdmin {
 
     private final VBox root;
-    private Button agregar, eliminar, actualizar, buscar;
+    private Button agregar, eliminar, actualizar, buscar,consultar;
     private Label titulo;
     private Stage inventoryStage;
     private Scene scene;
@@ -40,7 +40,7 @@ public final class PanelInventarioAdmin {
 
     public void setStage() {
         inventoryStage = new Stage();
-        scene = new Scene(this.getRoot(), 800, 400);
+        scene = new Scene(this.getRoot(), 800, 600);
         inventoryStage.setScene(scene);
         inventoryStage.setTitle("Inventario");
         inventoryStage.setResizable(false);
@@ -71,7 +71,7 @@ public final class PanelInventarioAdmin {
         actualizar.setPrefSize(Ctes.BUT_WIDTH + 10, Ctes.BUT_HEIGHT - 10);
         buscar.setPrefSize(Ctes.BUT_WIDTH + 10, Ctes.BUT_HEIGHT - 10);
         
-        buscar.setOnAction(e-> new PanelConsultaArticulos());
+        buscar.setOnAction(e-> new PanelBusquedaArticulos());
         agregar.setOnAction(e -> new PanelAgregaArticulos());
 //        eliminar.setOnAction(e -> showAlert());
 //        actualizar.setOnAction(e -> showAlert());

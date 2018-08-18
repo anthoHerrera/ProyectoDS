@@ -100,9 +100,14 @@ public final class PanelAgregaArticulos {
         ginebra.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         refri235.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         refri250.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
+        
+        lav70200.setOnAction(e-> manejarLav1());
 
     }
-
+    private void manejarLav1(){
+        
+    }
+    
     public Pane getRoot() {
         return root;
     }

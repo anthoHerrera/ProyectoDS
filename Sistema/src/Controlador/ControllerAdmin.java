@@ -37,10 +37,10 @@ public class ControllerAdmin {
     public ControllerAdmin() {
         this.cnx = new ConexionPostgresql();
     }
-    public ObservableList<ArticuloLineaBlanca> consultaArticulos() throws SQLException {
+    public ObservableList<ArticuloLineaBlanca> consultaArticulos(String comando) throws SQLException {
         ObservableList productos = null;
         ArrayList<ArticuloLineaBlanca> c = new ArrayList<>();
-        PreparedStatement statement = cnx.getCnx().prepareStatement("select * from articulo");
+        PreparedStatement statement = cnx.getCnx().prepareStatement(comando);
         ResultSet result = statement.executeQuery();
         
         DirectorCocina dc = new DirectorCocina();
@@ -89,4 +89,28 @@ public class ControllerAdmin {
         productos = FXCollections.observableArrayList(c);
         return productos;
     }
+//    
+//    public ObservableList<ArticuloLineaBlanca> consultaLavadoras() throws SQLException {
+//        ObservableList productos = null;
+//        ArrayList<ArticuloLineaBlanca> c = new ArrayList<>();
+//        PreparedStatement statement = cnx.getCnx().prepareStatement("select * from articulo where nombre like 'Cocina%'");
+//        ResultSet result = statement.executeQuery();
+//        
+//        DirectorCocina dc = new DirectorCocina();
+//        DirectorRefrigeradora dr = new DirectorRefrigeradora();
+//        DirectorLavadora dl = new DirectorLavadora();
+//        
+//        while(result.next()) {
+//                     
+//            if(result.getString("nombre").equals("Cocina de induccion Andalucia")){
+//                CocinaInduccionBuilder build = new AndaluciaBuilder();
+//                dc.setCocinaInduccionBuilder(build);
+//                dc.construirCocina();
+//                c.add(dc.getCocina());
+//            }else if(result.getString("nombre").equals("Cocina de induccion Ginebra")){
+//                CocinaInduccionBuilder build = new GinebraBuilder();
+//                dc.setCocinaInduccionBuilder(build);
+//                dc.construirCocina();
+//                c.add(dc.getCocina());
+//            }
 }

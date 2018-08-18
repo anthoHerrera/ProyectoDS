@@ -22,6 +22,7 @@ public class RDE250FXJBBuilder extends RefrigeradoraBuilder{
     public void buildPuertas() {
         fridge.setCantidadPuertas(2);
         fridge.setCapacidad(20);
+        fridge.setPrecio(1500);
     }
 
     @Override
