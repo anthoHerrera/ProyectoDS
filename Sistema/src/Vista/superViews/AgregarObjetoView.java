@@ -147,28 +147,39 @@ public class AgregarObjetoView {
 			prepareStatement(query);
 		statements.setString(1, comboLocales.getValue().toString());
 		ResultSet result = statements.executeQuery();
-
+		
+		String idArtIngresado = this.getArticuloId(modelo);//SE OBTIENE ID DEL ARTICULO SELECCIONADO
+		String inv = result.getString("idInventario");
+		//EN EL COMBOBOX
+		
 		while(result.next()){
-			//String inv = result.getString("idInventario");
+			
 			String idArtTabla = result.getString("idarticulo");
 			Integer cantArt = result.getInt("cantidadarticulo");
-			String idArtIngresado = this.getArticuloId(modelo);
-			
 			
 			if(idArtTabla.equals(idArtIngresado)){
 				cantArt++;
-				PreparedStatement insertStatement = conexion.getCnx().
+				PreparedStatement updateStatement = conexion.getCnx().
 					prepareStatement("UPDATE inventariostock\n"
 								+ "SET cantidadarticulo = ?\n"
 							+ "WHERE idarticulo like ? ");
-				insertStatement.setInt(1, cantArt);
-				insertStatement.setString(2, idArtTabla);
-				insertStatement.execute();
+				updateStatement.setInt(1, cantArt);
+				updateStatement.setString(2, idArtTabla);
+				updateStatement.execute();
 				System.out.println("cambio algo xd");
 				return;
 			}
-			
 		}
+		//SE PROCEDE A INSERTAR SI ES QUE NO SE ENCONTRO EL ARTICULO EN EL INVENTARIO
+		ConexionPostgresql insertCon = new ConexionPostgresql();
+		String queryInsert = "INSERT INTO inventariostock (idinventario,idlocal,cantidadarticulo)\n"
+				+ "VALUES (?,?,?)";
+		PreparedStatement pre = insertCon.getCnx().prepareStatement(queryInsert);
+		pre.setString(1, inv);
+		pre.setString(2, comboLocales.getValue().toString());
+		pre.setInt(3, 1);
+		pre.execute();
+		
 		System.out.println("no cambio nada");
 						
 	}
