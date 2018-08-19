@@ -21,7 +21,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -82,7 +81,7 @@ public final class PanelBusquedaArticulos {
 
         root.setStyle("-fx-background-color: lavender");
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(titulo, hbox,tabla);
+        root.getChildren().addAll(titulo, hbox,tabla,regresar);
 
     }
 
@@ -178,25 +177,33 @@ public final class PanelBusquedaArticulos {
     }
 
     private void manejarBuscar() {
-        if (cb.getValue().equals("Todos")) {
-            root.getChildren().removeAll(titulo, hbox, tabla);
-            generarTabla("select * from articulo");
-            root.getChildren().addAll(titulo, hbox, tabla);
-        }
-        else if (cb.getValue().equals("Cocinas")) {
-            root.getChildren().removeAll(titulo, hbox, tabla);
-            generarTabla("select * from articulo where nombre like 'Cocina%'");
-            root.getChildren().addAll(titulo, hbox, tabla);
-        } 
-        else if (cb.getValue().equals("Lavadoras")) {
-            root.getChildren().removeAll(titulo, hbox, tabla);
-            generarTabla("select * from articulo where nombre like 'Lavadora%'");
-            root.getChildren().addAll(titulo, hbox, tabla);
-        } 
-        else if (cb.getValue().equals("Refrigeradoras")) {
-            root.getChildren().removeAll(titulo, hbox, tabla);
-            generarTabla("select * from articulo where nombre like 'Refrigeradora%'");
-            root.getChildren().addAll(titulo, hbox, tabla);
+        if (cb.getValue() != null) {
+            switch (cb.getValue()) {
+                case "Todos":
+                    root.getChildren().clear();
+                    generarTabla("select * from articulo");
+                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    break;
+                case "Cocinas":
+                    root.getChildren().clear();
+                    generarTabla("select * from articulo where nombre like 'Cocina%'");
+                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    break;
+                case "Lavadoras":
+                    root.getChildren().clear();
+                    generarTabla("select * from articulo where nombre like 'Lavadora%'");
+                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    break;
+                case "Refrigeradoras":
+                    root.getChildren().clear();
+                    generarTabla("select * from articulo where nombre like 'Refrigeradora%'");
+                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            showAlert();
         }
 
     }
@@ -206,6 +213,14 @@ public final class PanelBusquedaArticulos {
         alert.setTitle("Error");
         alert.setHeaderText("Se ha producido un error");
         alert.setContentText("El sistema no ha podido mostrar los clientes");
+        alert.showAndWait();
+    }
+    
+    private void showAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Advertencia");
+        alert.setHeaderText("Seleccciona un opcion");
+        alert.setContentText("El sistema requiere que se seleccione una opcion");
         alert.showAndWait();
     }
 

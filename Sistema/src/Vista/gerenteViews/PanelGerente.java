@@ -5,14 +5,11 @@
  */
 package Vista.gerenteViews;
 
-import Vista.gerenteViews.PanelConsultaClientes;
 import Controlador.ControllerGerente;
 import Modelo.Cliente;
 import Modelo.Ctes;
 import Vista.SceneOrganizer;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Vista.adminViews.PanelBusquedaArticulos;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -30,9 +27,6 @@ public class PanelGerente {
     private final VBox root;
     private Button articulos, ventas, clientes, cerrarSesion;
     private Label titulo;
-    private ObservableList<Cliente> listaClientes;
-    private TableView tabla;
-    private ControllerGerente controlador;
     
     public PanelGerente(){
         root = new VBox(50);
@@ -41,7 +35,6 @@ public class PanelGerente {
     }
     
     private void setUp(){
-        controlador = new ControllerGerente();
         titulo = new Label("Consultas");
         titulo.setFont(Font.font("Cambria", 32));
         
@@ -67,7 +60,7 @@ public class PanelGerente {
     
     private void setFunctButtons() {
         articulos.setOnAction(e -> {
-            showAlert();
+            showArticulos();
         });
         
         articulos.setOnMouseEntered(e -> {
@@ -125,6 +118,10 @@ public class PanelGerente {
     
     private void showClients() {
         PanelConsultaClientes panel = new PanelConsultaClientes();
+    }
+    
+    private void showArticulos() {
+        PanelBusquedaArticulos panel = new PanelBusquedaArticulos();
     }
     
     public void showAlert() {
