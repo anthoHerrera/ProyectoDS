@@ -74,7 +74,7 @@ public class PanelGerente {
         });
         
         ventas.setOnAction(e ->  {
-            showAlert();
+            showVentas();
         });
         
         ventas.setOnMouseEntered(e -> {
@@ -122,6 +122,10 @@ public class PanelGerente {
     
     private void showArticulos() {
         PanelBusquedaArticulos panel = new PanelBusquedaArticulos();
+    }
+
+    private void showVentas() {
+        PanelConsultaVentas panel = new PanelConsultaVentas();
     }
     
     public void showAlert() {

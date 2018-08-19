@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Cliente;
+import Modelo.Transaccion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,6 +38,21 @@ public class ControllerGerente {
         }
         clientes = FXCollections.observableArrayList(c);
         return clientes;
+    }
+
+    public ObservableList<Transaccion> consultaVentas() throws SQLException {
+        ObservableList ventas = null;
+        ArrayList<Transaccion> v = new ArrayList<>();
+        PreparedStatement statement = cnx.getCnx().prepareStatement("select * from transaccion where tipo = 'venta'");
+        ResultSet result = statement.executeQuery();
+        while(result.next()) {
+            Transaccion venta = new Transaccion(result.getInt("idTransaccion"), result.getString("tipo"), 
+                    result.getDate("fecha"), result.getString("idEmpleado"), 
+                    result.getString("idCliente"), result.getBoolean("isVisible"));
+            v.add(venta);
+        }
+        ventas = FXCollections.observableArrayList(v);
+        return ventas;
     }
     
     

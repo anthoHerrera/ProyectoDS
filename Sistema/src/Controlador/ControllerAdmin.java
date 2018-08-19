@@ -19,7 +19,6 @@ import Builders.RDE235UWABBuilder;
 import Builders.RDE250FXJBBuilder;
 import Builders.RefrigeradoraBuilder;
 import Modelo.ArticuloLineaBlanca;
-import Modelo.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
