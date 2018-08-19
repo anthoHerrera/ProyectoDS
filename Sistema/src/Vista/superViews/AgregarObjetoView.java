@@ -66,7 +66,7 @@ public class AgregarObjetoView {
 			"Lavadora LMD75B0",
 			"Lavadora WMC1786SXWW3"
 		);
-		comboBoxito.setValue("LavadoraLMD75B0");
+		comboBoxito.setValue("Lavadora LMD75B0");
 		
 		comboLocales = new ComboBox();
 		comboLocales.getItems().addAll(
@@ -149,11 +149,11 @@ public class AgregarObjetoView {
 		ResultSet result = statements.executeQuery();
 		
 		String idArtIngresado = this.getArticuloId(modelo);//SE OBTIENE ID DEL ARTICULO SELECCIONADO
-		String inv = result.getString("idInventario");
 		//EN EL COMBOBOX
+		String inv = null;
 		
 		while(result.next()){
-			
+			inv = result.getString("idinventario");
 			String idArtTabla = result.getString("idarticulo");
 			Integer cantArt = result.getInt("cantidadarticulo");
 			
@@ -172,12 +172,13 @@ public class AgregarObjetoView {
 		}
 		//SE PROCEDE A INSERTAR SI ES QUE NO SE ENCONTRO EL ARTICULO EN EL INVENTARIO
 		ConexionPostgresql insertCon = new ConexionPostgresql();
-		String queryInsert = "INSERT INTO inventariostock (idinventario,idlocal,cantidadarticulo)\n"
-				+ "VALUES (?,?,?)";
+		String queryInsert = "INSERT INTO inventariostock (idinventario,idarticulo,cantidadarticulo,isvisible)\n"
+				+ "VALUES (?,?,?,?)";
 		PreparedStatement pre = insertCon.getCnx().prepareStatement(queryInsert);
 		pre.setString(1, inv);
-		pre.setString(2, comboLocales.getValue().toString());
+		pre.setString(2, idArtIngresado);
 		pre.setInt(3, 1);
+		pre.setBoolean(4, true);
 		pre.execute();
 		
 		System.out.println("no cambio nada");
