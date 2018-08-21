@@ -46,6 +46,7 @@ public final class PanelBusquedaArticulos {
 
     public PanelBusquedaArticulos() {
         root = new VBox(10);
+        setUpComboBoxes();
         setUp();
         setUpButtons();
         setStage();
@@ -69,7 +70,6 @@ public final class PanelBusquedaArticulos {
 
         hbox = new HBox(5);
         boton = new Button("Buscar");
-        setUpComboBoxes();
         ingreso = new Label("Ingrese el producto a buscar");
         hbox.getChildren().addAll(ingreso, cb, boton);
         titulo = new Label("Productos");
@@ -181,21 +181,25 @@ public final class PanelBusquedaArticulos {
             switch (cb.getValue()) {
                 case "Todos":
                     root.getChildren().clear();
+                    tabla.getColumns().clear();
                     generarTabla("select * from articulo");
                     root.getChildren().addAll(titulo, hbox, tabla, regresar);
                     break;
                 case "Cocinas":
                     root.getChildren().clear();
+                    tabla.getColumns().clear();
                     generarTabla("select * from articulo where nombre like 'Cocina%'");
                     root.getChildren().addAll(titulo, hbox, tabla, regresar);
                     break;
                 case "Lavadoras":
                     root.getChildren().clear();
+                    tabla.getColumns().clear();
                     generarTabla("select * from articulo where nombre like 'Lavadora%'");
                     root.getChildren().addAll(titulo, hbox, tabla, regresar);
                     break;
                 case "Refrigeradoras":
                     root.getChildren().clear();
+                    tabla.getColumns().clear();
                     generarTabla("select * from articulo where nombre like 'Refrigeradora%'");
                     root.getChildren().addAll(titulo, hbox, tabla, regresar);
                     break;

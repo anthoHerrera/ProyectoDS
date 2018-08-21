@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Vista.vendedorViews.PanelVendedor;
 import Vista.adminViews.PanelAdmin;
 import Vista.gerenteViews.PanelGerente;
 import Vista.superViews.PanelSuper;

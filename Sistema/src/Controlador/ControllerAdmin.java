@@ -88,6 +88,24 @@ public class ControllerAdmin {
         productos = FXCollections.observableArrayList(c);
         return productos;
     }
+    
+//    public void agregaArticulos(String comando) throws SQLException{
+//        PreparedStatement statement = cnx.getCnx().prepareStatement("INSERT INTO articulo(idarticulo, nombre, descripcion, marca, precio, tamano, potenciatotal, inductores, voltaje, cantidadpuertas, capacidad, filtroagua, nivelestemperatura, isvisible) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+//        ResultSet result = statement.executeQuery();
+//        
+//        try {
+//            PreparedStatement st = conexion.getCnx().prepareStatement("INSERT INTO cliente (cedula, nombre, telefono, isvisible) VALUES (?, ?, ?, ?)");
+//            st.setString(1, cliente.getCedula());
+//            st.setString(2, cliente.getNombre());
+//            st.setString(3, cliente.getTelefono());
+//            st.setBoolean(4, cliente.isIsVisible());
+//            st.executeUpdate();
+//            st.close();
+//            crearCliente.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 //    
 //    public ObservableList<ArticuloLineaBlanca> consultaLavadoras() throws SQLException {
 //        ObservableList productos = null;
