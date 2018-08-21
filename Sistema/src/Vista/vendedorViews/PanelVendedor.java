@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package Vista.vendedorViews;
 
+import Vista.vendedorViews.CrearCliente;
 import Modelo.Ctes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
