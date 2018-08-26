@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package chain;
+package modelo.chain;
 
 /**
  *
@@ -16,11 +16,11 @@ public abstract class VendedorProcessor {
         this.nextProcessor = next;
     }
     
-    public abstract boolean checkFree();
+    public abstract VendedorProcessor checkFree();
     
-    protected boolean checkNext(){
+    protected VendedorProcessor checkNext(){
         if (this.nextProcessor == null) {
-            return false;
+            return null;
         }
         return this.nextProcessor.checkFree();
     }
