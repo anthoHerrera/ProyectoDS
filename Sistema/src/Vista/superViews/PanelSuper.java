@@ -6,6 +6,7 @@
 package Vista.superViews;
 
 import Modelo.Ctes;
+import Strategy.reportes.ReporteVentasSemanales;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,7 +23,7 @@ import javafx.scene.text.Font;
 public final class PanelSuper {
 
     private final VBox root;
-    private Button inventario, transacciones, bodega, salir;
+    private Button inventario, transacciones,reportes, bodega, salir;
     private Label titulo;
 
     public PanelSuper() {
@@ -40,23 +41,26 @@ public final class PanelSuper {
 
         inventario = new Button("INVENTARIO");
         transacciones = new Button("TRANSACCIONES");
+		reportes = new Button("REPORTES");
         bodega = new Button("BODEGA");
         salir = new Button("SALIR");
 
         inventario.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
+		reportes.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         transacciones.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         bodega.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         salir.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
 
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: lavender");
-        root.getChildren().addAll(titulo, inventario, transacciones, bodega, salir);
+        root.getChildren().addAll(titulo, inventario, transacciones,reportes, bodega, salir);
 
     }
 
     private void setupFunctButtons() {
 
         inventario.setOnAction(e -> new PanelInventarioSuper(this));
+		reportes.setOnAction(e-> new ReporteVentasSemanales());
         salir.setOnAction(e -> Platform.exit());
     }
 
