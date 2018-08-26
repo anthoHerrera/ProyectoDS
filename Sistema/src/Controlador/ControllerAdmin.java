@@ -6,9 +6,12 @@
 package Controlador;
 
 import Modelo.FactoryMethod.Articulo;
+import Modelo.FactoryMethod.CocinaFactoryMethod;
 import Modelo.FactoryMethod.CocinaInduccionFactory;
 import Modelo.FactoryMethod.LavadoraFactory;
+import Modelo.FactoryMethod.LavadoraFactoryMethod;
 import Modelo.FactoryMethod.RefrigeradoraFactory;
+import Modelo.FactoryMethod.RefrigeradoraFactoryMethod;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,7 +38,7 @@ public class ControllerAdmin {
         while(result.next()) {
                      
             if(result.getString("nombre").startsWith("Cocina de induccion")){
-                CocinaInduccionFactory cocina = new CocinaInduccionFactory();
+                CocinaFactoryMethod cocina = new CocinaInduccionFactory();
                 Articulo coc = cocina.createCocina(result.getString("idarticulo"),result.getString("nombre"), result.getString("descripcion"), result.getString("marca"), 
                         result.getDouble("precio"),result.getString("tamano"),result.getString("potenciatotal"),result.getInt("inductores"), result.getString("voltaje"));
                 c.add(coc);
@@ -47,7 +50,7 @@ public class ControllerAdmin {
 //                c.add(dc.getCocina());
 //            }
             else if(result.getString("nombre").startsWith("Refrigeradora")){
-                RefrigeradoraFactory refrigeradora = new RefrigeradoraFactory();
+                RefrigeradoraFactoryMethod refrigeradora = new RefrigeradoraFactory();
                 Articulo refri = refrigeradora.createRefrigeradora(result.getString("idarticulo"),result.getString("nombre"), result.getString("descripcion"), 
                         result.getString("marca"), result.getDouble("precio"), result.getInt("cantidadpuertas"), result.getInt("capacidad"), result.getString("filtroagua"));
                 c.add(refri);
@@ -59,7 +62,7 @@ public class ControllerAdmin {
 //                c.add(dr.getRefrigeradora());
 //            }
             else if(result.getString("nombre").startsWith("Lavadora")){
-                LavadoraFactory lavadora = new LavadoraFactory();
+                LavadoraFactoryMethod lavadora = new LavadoraFactory();
                 Articulo lav = lavadora.createLavadora(result.getString("idarticulo"),result.getString("nombre"), result.getString("descripcion"), result.getString("marca"),
                         result.getDouble("precio"), result.getInt("capacidad"), result.getInt("nivelestemperatura"));
                 c.add(lav);
