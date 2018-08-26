@@ -6,7 +6,7 @@
 package Vista.adminViews;
 
 import Controlador.ControllerAdmin;
-import Modelo.ArticuloLineaBlanca;
+import Modelo.FactoryMethod.Articulo;
 import Modelo.Ctes;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -39,8 +39,8 @@ public final class PanelBusquedaArticulos {
     private ComboBox<String> cb;
     private Button regresar, boton;
     private ControllerAdmin controlador;
-    private ObservableList<ArticuloLineaBlanca> articulos;
-    private TableView<ArticuloLineaBlanca> tabla;
+    private ObservableList<Articulo> articulos;
+    private TableView<Articulo> tabla;
     private Stage articuloStage;
     private Scene scene;
 

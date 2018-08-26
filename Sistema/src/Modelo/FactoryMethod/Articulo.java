@@ -3,18 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Modelo.FactoryMethod;
 
 /**
  *
  * @author JuanJose FS
  */
-public class ArticuloLineaBlanca {
+public abstract class Articulo {
+
     protected String nombre;
     protected String descripcion;
     protected String marca;
-    protected int precio;
-	
+    protected double precio;
+
+    public Articulo(String nombre, String descripcion, String marca, double precio) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.marca = marca;
+        this.precio = precio;
+    }
 
     public String getNombre() {
         return nombre;
@@ -40,13 +47,12 @@ public class ArticuloLineaBlanca {
         this.marca = marca;
     }
 
-    public int getPrecio() {
-		return precio;
-	}
+    public double getPrecio() {
+        return precio;
+    }
 
     public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-    
-    
+        this.precio = precio;
+    }
+
 }

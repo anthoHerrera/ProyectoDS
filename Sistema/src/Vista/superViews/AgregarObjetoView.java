@@ -5,12 +5,8 @@
  */
 package Vista.superViews;
 
-import FactoryMethod.DirectorLavadora;
-import FactoryMethod.LavadoraLMA70200WGAB0Builder;
-import FactoryMethod.LavadoraLMD75B0Builder;
-import FactoryMethod.LavadoraWMC1786SXWW3Builder;
 import Controlador.ConexionPostgresql;
-import Modelo.Lavadora;
+import Modelo.FactoryMethod.Lavadora;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -116,7 +112,7 @@ public class AgregarObjetoView {
 		stage.showAndWait();
 	}
 	
-	private void validateSelection() throws SQLException{
+	/*private void validateSelection() throws SQLException{
 		DirectorLavadora director = new DirectorLavadora();
 		Lavadora lavadora = null;
 		
@@ -124,15 +120,15 @@ public class AgregarObjetoView {
 		switch(modelo){
 			
 			case "Lavadora LMA70200WGAB0":
-				director.setConstructorLavadoras(new LavadoraLMA70200WGAB0Builder() );
+				director.setConstructorLavadoras(new LMA70200WGAB0() );
 				director.construirLavadora();
 				lavadora = director.getLavadora();
 			case "Lavadora LMD75B0":
-				director.setConstructorLavadoras( new LavadoraLMD75B0Builder());
+				director.setConstructorLavadoras(new LMD75B0());
 				director.construirLavadora();
 				lavadora = director.getLavadora();
 			case "Lavadora WMC1786SXWW3":
-				director.setConstructorLavadoras(new LavadoraWMC1786SXWW3Builder() );
+				director.setConstructorLavadoras(new WMC1786SXWW3() );
 				director.construirLavadora();
 				lavadora = director.getLavadora();
 		}
@@ -183,7 +179,7 @@ public class AgregarObjetoView {
 		
 		System.out.println("no cambio nada");
 						
-	}
+	}*/
 	
 	private String getArticuloId(String modelo) throws SQLException{
 
