@@ -5,19 +5,19 @@
  */
 package Controlador;
 
-import Builders.AndaluciaBuilder;
-import Builders.CocinaInduccionBuilder;
-import Builders.LavadoraBuilder;
-import Builders.DirectorCocina;
-import Builders.DirectorLavadora;
-import Builders.DirectorRefrigeradora;
-import Builders.GinebraBuilder;
-import Builders.LavadoraLMA70200WGAB0Builder;
-import Builders.LavadoraLMD75B0Builder;
-import Builders.LavadoraWMC1786SXWW3Builder;
-import Builders.RDE235UWABBuilder;
-import Builders.RDE250FXJBBuilder;
-import Builders.RefrigeradoraBuilder;
+import FactoryMethod.AndaluciaBuilder;
+import FactoryMethod.CocinaInduccionBuilder;
+import FactoryMethod.LavadoraBuilder;
+import FactoryMethod.DirectorCocina;
+import FactoryMethod.DirectorLavadora;
+import FactoryMethod.DirectorRefrigeradora;
+import FactoryMethod.GinebraBuilder;
+import FactoryMethod.LavadoraLMA70200WGAB0Builder;
+import FactoryMethod.LavadoraLMD75B0Builder;
+import FactoryMethod.LavadoraWMC1786SXWW3Builder;
+import FactoryMethod.RDE235UWABBuilder;
+import FactoryMethod.RDE250FXJBBuilder;
+import FactoryMethod.RefrigeradoraBuilder;
 import Modelo.ArticuloLineaBlanca;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

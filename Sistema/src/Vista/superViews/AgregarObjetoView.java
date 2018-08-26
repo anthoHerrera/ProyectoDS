@@ -5,10 +5,10 @@
  */
 package Vista.superViews;
 
-import Builders.DirectorLavadora;
-import Builders.LavadoraLMA70200WGAB0Builder;
-import Builders.LavadoraLMD75B0Builder;
-import Builders.LavadoraWMC1786SXWW3Builder;
+import FactoryMethod.DirectorLavadora;
+import FactoryMethod.LavadoraLMA70200WGAB0Builder;
+import FactoryMethod.LavadoraLMD75B0Builder;
+import FactoryMethod.LavadoraWMC1786SXWW3Builder;
 import Controlador.ConexionPostgresql;
 import Modelo.Lavadora;
 import java.sql.PreparedStatement;
