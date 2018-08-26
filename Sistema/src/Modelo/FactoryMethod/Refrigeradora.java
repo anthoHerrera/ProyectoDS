@@ -3,17 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Modelo.FactoryMethod;
+
 
 /**
  *
  * @author JuanJose FS
  */
-public class Refrigeradora extends Articulo{
+public class Refrigeradora extends Articulo {
+
     private int cantidadPuertas;
     private int capacidad;
     private String filtroAgua;
-    
+
+    public Refrigeradora(String idArticulo, String nombre, String descripcion, String marca, double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
+        super(idArticulo, nombre, descripcion, marca, precio);
+        this.cantidadPuertas = cantidadPuertas;
+        this.capacidad = capacidad;
+        this.filtroAgua = filtroAgua;
+    }
+
     public int getCantidadPuertas() {
         return cantidadPuertas;
     }
@@ -37,5 +46,5 @@ public class Refrigeradora extends Articulo{
     public void setFiltroAgua(String filtroAgua) {
         this.filtroAgua = filtroAgua;
     }
-    
+
 }

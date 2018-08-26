@@ -3,20 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Modelo.FactoryMethod;
+
 
 /**
  *
  * @author JuanJose FS
  */
-public class CocinaInduccion extends Articulo{
+public class CocinaInduccion extends Articulo {
+
     protected String tamano;
     protected String potenciaTotal;
     protected int inductores;
     protected String voltaje;
 
-    public CocinaInduccion(String nombre, String descripcion, String  marca, int precio, String tamano, String potenciaTotal, int inductores, String voltaje ) {
-        super(nombre, descripcion, marca, precio);
+    public CocinaInduccion(String idArticulo, String nombre, String descripcion, String marca, double precio, 
+            String tamano, String potenciaTotal, int inductores, String voltaje) {
+        super(idArticulo, nombre, descripcion, marca, precio);
         this.tamano = tamano;
         this.potenciaTotal = potenciaTotal;
         this.inductores = inductores;
@@ -54,7 +57,5 @@ public class CocinaInduccion extends Articulo{
     public void setVoltaje(String voltaje) {
         this.voltaje = voltaje;
     }
-    
-    
 
 }

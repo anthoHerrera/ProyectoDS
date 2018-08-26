@@ -5,12 +5,8 @@
  */
 package Vista.superViews;
 
-import FactoryMethod.DirectorLavadora;
-import FactoryMethod.LMA70200WGAB0;
-import FactoryMethod.LMD75B0;
-import FactoryMethod.WMC1786SXWW3;
 import Controlador.ConexionPostgresql;
-import Modelo.Lavadora;
+import Modelo.FactoryMethod.Lavadora;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -94,13 +90,13 @@ public class AgregarObjetoView {
 		
 		contenedorBotones.getChildren().addAll(agregar,cerrar);
 		
-		agregar.setOnAction(e->{
-			try {
-				validateSelection();
-			} catch (SQLException ex) {
-				Logger.getLogger(AgregarObjetoView.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		});
+//		agregar.setOnAction(e->{
+//			try {
+//				validateSelection();
+//			} catch (SQLException ex) {
+//				Logger.getLogger(AgregarObjetoView.class.getName()).log(Level.SEVERE, null, ex);
+//			}
+//		});
 		
 		cerrar.setOnAction(e->stage.close());
 		
@@ -116,7 +112,7 @@ public class AgregarObjetoView {
 		stage.showAndWait();
 	}
 	
-	private void validateSelection() throws SQLException{
+	/*private void validateSelection() throws SQLException{
 		DirectorLavadora director = new DirectorLavadora();
 		Lavadora lavadora = null;
 		
@@ -183,7 +179,7 @@ public class AgregarObjetoView {
 		
 		System.out.println("no cambio nada");
 						
-	}
+	}*/
 	
 	private String getArticuloId(String modelo) throws SQLException{
 

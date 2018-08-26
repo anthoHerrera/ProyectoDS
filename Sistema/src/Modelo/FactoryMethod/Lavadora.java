@@ -3,16 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Modelo.FactoryMethod;
+
 
 /**
  *
  * @author JuanJose FS
  */
-public class Lavadora extends Articulo{
+public class Lavadora extends Articulo {
+
     private int capacidad;
     private int nivelesTemperatura;
 
+    public Lavadora(String idArticulo, String nombre, String descripcion, String marca, 
+            double precio, int capacidad, int nivelesTemperatura) {
+        super(idArticulo, nombre, descripcion, marca, precio);
+        this.capacidad = capacidad;
+        this.nivelesTemperatura = nivelesTemperatura;
+    }
 
     public Integer getCapacidad() {
         return capacidad;
@@ -29,5 +37,5 @@ public class Lavadora extends Articulo{
     public void setNivelesTemperatura(int nivelesTemperatura) {
         this.nivelesTemperatura = nivelesTemperatura;
     }
-    
+
 }
