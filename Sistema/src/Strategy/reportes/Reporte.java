@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Strategy;
+package Strategy.reportes;
 
 /**
  *
  * @author gabpa
  */
-public interface TipoDePago {
+public interface Reporte {
 	
-	public void pagar();
+	public void generarReporte();
 	
 }
