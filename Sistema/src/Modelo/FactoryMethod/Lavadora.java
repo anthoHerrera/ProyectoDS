@@ -15,8 +15,9 @@ public class Lavadora extends Articulo {
     private int capacidad;
     private int nivelesTemperatura;
 
-    public Lavadora(String nombre, String descripcion, String marca, double precio, int capacidad, int nivelesTemperatura) {
-        super(nombre, descripcion, marca, precio);
+    public Lavadora(String idArticulo, String nombre, String descripcion, String marca, 
+            double precio, int capacidad, int nivelesTemperatura) {
+        super(idArticulo, nombre, descripcion, marca, precio);
         this.capacidad = capacidad;
         this.nivelesTemperatura = nivelesTemperatura;
     }

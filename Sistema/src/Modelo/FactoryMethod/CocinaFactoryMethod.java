@@ -10,6 +10,6 @@ package Modelo.FactoryMethod;
  * @author Anthony777
  */
 public interface CocinaFactoryMethod {
-    public CocinaInduccion createCocina(String nombre, String descripcion, String marca, 
+    public CocinaInduccion createCocina(String idArticulo, String nombre, String descripcion, String marca, 
             double precio, String tamano, String potenciaTotal, int inductores, String voltaje);
 }

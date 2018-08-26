@@ -10,6 +10,6 @@ package Modelo.FactoryMethod;
  * @author Anthony777
  */
 public interface RefrigeradoraFactoryMethod {
-    public Refrigeradora createRefrigeradora(String nombre, String descripcion, 
+    public Refrigeradora createRefrigeradora(String idArticulo, String nombre, String descripcion, 
             String marca, double precio, int cantidadPuertas, int capacidad, String filtroAgua);
 }

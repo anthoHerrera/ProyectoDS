@@ -11,8 +11,9 @@ package Modelo.FactoryMethod;
  */
 public class RDE250FXJB extends Refrigeradora {
     
-    public RDE250FXJB(String nombre, String descripcion, String marca, double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
-        super(nombre, descripcion, marca, precio, cantidadPuertas, capacidad, filtroAgua);
+    public RDE250FXJB(String idArticulo, String nombre, String descripcion, String marca, 
+            double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
+        super(idArticulo, nombre, descripcion, marca, precio, cantidadPuertas, capacidad, filtroAgua);
     }
     
 }

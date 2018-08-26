@@ -11,18 +11,28 @@ package Modelo.FactoryMethod;
  */
 public abstract class Articulo {
 
+    protected String idArticulo;
     protected String nombre;
     protected String descripcion;
     protected String marca;
     protected double precio;
 
-    public Articulo(String nombre, String descripcion, String marca, double precio) {
+    public Articulo(String idArticulo, String nombre, String descripcion, String marca, double precio) {
+        this.idArticulo = idArticulo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.marca = marca;
         this.precio = precio;
     }
 
+    public String getIdArticulo() {
+        return idArticulo;
+    }
+
+    public void setIdArticulo(String idArticulo) {
+        this.idArticulo = idArticulo;
+    }
+    
     public String getNombre() {
         return nombre;
     }

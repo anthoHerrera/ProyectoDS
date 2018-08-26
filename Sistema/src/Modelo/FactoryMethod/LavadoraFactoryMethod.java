@@ -10,6 +10,6 @@ package Modelo.FactoryMethod;
  * @author Anthony777
  */
 public interface LavadoraFactoryMethod {
-    public Lavadora createLavadora(String nombre, String descripcion, String marca, 
+    public Lavadora createLavadora(String idArticulo, String nombre, String descripcion, String marca, 
             double precio, int capacidad, int nivelesTemperatura);
 }

@@ -16,8 +16,8 @@ public class Refrigeradora extends Articulo {
     private int capacidad;
     private String filtroAgua;
 
-    public Refrigeradora(String nombre, String descripcion, String marca, double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
-        super(nombre, descripcion, marca, precio);
+    public Refrigeradora(String idArticulo, String nombre, String descripcion, String marca, double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
+        super(idArticulo, nombre, descripcion, marca, precio);
         this.cantidadPuertas = cantidadPuertas;
         this.capacidad = capacidad;
         this.filtroAgua = filtroAgua;

@@ -11,8 +11,9 @@ package Modelo.FactoryMethod;
  */
 public class RDE235UWAB extends Refrigeradora {
     
-    public RDE235UWAB(String nombre, String descripcion, String marca, double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
-        super(nombre, descripcion, marca, precio, cantidadPuertas, capacidad, filtroAgua);
+    public RDE235UWAB(String idArticulo, String nombre, String descripcion, String marca, 
+            double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
+        super(idArticulo, nombre, descripcion, marca, precio, cantidadPuertas, capacidad, filtroAgua);
     }
     
 }

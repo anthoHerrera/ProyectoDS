@@ -12,14 +12,14 @@ package Modelo.FactoryMethod;
 public class RefrigeradoraFactory implements RefrigeradoraFactoryMethod {
 
     @Override
-    public Refrigeradora createRefrigeradora(String nombre, String descripcion, 
+    public Refrigeradora createRefrigeradora(String idArticulo, String nombre, String descripcion, 
             String marca, double precio, int cantidadPuertas, int capacidad, String filtroAgua) {
-        if(nombre.equals("Refrigeradora RDE235UWAB")) {
-            return new RDE235UWAB(nombre, descripcion, marca, precio, cantidadPuertas, 
-                    capacidad, filtroAgua);
+        if(idArticulo.equals("re1")) {
+            return new RDE235UWAB(idArticulo, nombre, descripcion, marca, precio, 
+                    cantidadPuertas, capacidad, filtroAgua);
         }else {
-            return new RDE250FXJB(nombre, descripcion, marca, precio, cantidadPuertas, 
-                    capacidad, filtroAgua);
+            return new RDE250FXJB(idArticulo, nombre, descripcion, marca, precio, 
+                    cantidadPuertas, capacidad, filtroAgua);
         }
     }
     

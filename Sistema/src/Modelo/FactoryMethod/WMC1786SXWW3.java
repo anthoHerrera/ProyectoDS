@@ -11,8 +11,9 @@ package Modelo.FactoryMethod;
  */
 public class WMC1786SXWW3 extends Lavadora {
     
-    public WMC1786SXWW3(String nombre, String descripcion, String marca, double precio, int capacidad, int nivelesTemperatura) {
-        super(nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
+    public WMC1786SXWW3(String idArticulo, String nombre, String descripcion, String marca, 
+            double precio, int capacidad, int nivelesTemperatura) {
+        super(idArticulo, nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
     }
     
 }

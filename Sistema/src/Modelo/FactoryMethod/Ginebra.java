@@ -11,8 +11,8 @@ package Modelo.FactoryMethod;
  */
 public class Ginebra extends CocinaInduccion {
     
-    public Ginebra(String nombre, String descripcion, String marca, double precio, String tamano, String potenciaTotal, int inductores, String voltaje) {
-        super(nombre, descripcion, marca, precio, tamano, potenciaTotal, inductores, voltaje);
+    public Ginebra(String idArticulo, String nombre, String descripcion, String marca, double precio, String tamano, String potenciaTotal, int inductores, String voltaje) {
+        super(idArticulo, nombre, descripcion, marca, precio, tamano, potenciaTotal, inductores, voltaje);
     }
     
 }

@@ -12,14 +12,17 @@ package Modelo.FactoryMethod;
 public class LavadoraFactory implements LavadoraFactoryMethod {
 
     @Override
-    public Lavadora createLavadora(String nombre, String descripcion, String marca, 
+    public Lavadora createLavadora(String idArticulo, String nombre, String descripcion, String marca, 
             double precio, int capacidad, int nivelesTemperatura) {
-        if(nombre.equals("Lavadora LMD75B0")) {
-            return new LMD75B0(nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
-        }else if(nombre.equals("Lavadora LMA70200WGAB0")) {
-            return new LMA70200WGAB0(nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
+        if(idArticulo.equals("la1")) {
+            return new LMD75B0(idArticulo, nombre, descripcion, marca, precio, 
+                    capacidad, nivelesTemperatura);
+        }else if(idArticulo.equals("la2")) {
+            return new LMA70200WGAB0(idArticulo, nombre, descripcion, marca, precio, 
+                    capacidad, nivelesTemperatura);
         }else {
-            return new WMC1786SXWW3(nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
+            return new WMC1786SXWW3(idArticulo, nombre, descripcion, marca, precio, 
+                    capacidad, nivelesTemperatura);
         }
         
     }

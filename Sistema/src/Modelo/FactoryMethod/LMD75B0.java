@@ -11,8 +11,9 @@ package Modelo.FactoryMethod;
  */
 public class LMD75B0 extends Lavadora {
     
-    public LMD75B0(String nombre, String descripcion, String marca, double precio, int capacidad, int nivelesTemperatura) {
-        super(nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
+    public LMD75B0(String idArticulo, String nombre, String descripcion, String marca, 
+            double precio, int capacidad, int nivelesTemperatura) {
+        super(idArticulo, nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
     }
     
 }

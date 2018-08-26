@@ -12,14 +12,14 @@ package Modelo.FactoryMethod;
 public class CocinaInduccionFactory implements CocinaFactoryMethod {
 
     @Override
-    public CocinaInduccion createCocina(String nombre, String descripcion, String marca, 
+    public CocinaInduccion createCocina(String idArticulo, String nombre, String descripcion, String marca, 
             double precio, String tamano, String potenciaTotal, int inductores, String voltaje) {
-        if(nombre.equals("Cocina de induccion Andalucia")) {
-            return new Andalucia(nombre, descripcion, marca, precio, tamano, potenciaTotal, 
-                    inductores, voltaje);
+        if(idArticulo.equals("ci1")) {
+            return new Andalucia(idArticulo, nombre, descripcion, marca, precio, 
+                    tamano, potenciaTotal, inductores, voltaje);
         }else {
-            return new Ginebra(nombre, descripcion, marca, precio, tamano, potenciaTotal, 
-                    inductores, voltaje);
+            return new Ginebra(idArticulo, nombre, descripcion, marca, precio, tamano, 
+                    potenciaTotal, inductores, voltaje);
         }
     }
     
