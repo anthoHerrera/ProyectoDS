@@ -5,20 +5,20 @@
  */
 package Controlador;
 
-import Builders.AndaluciaBuilder;
-import Builders.CocinaInduccionBuilder;
-import Builders.LavadoraBuilder;
-import Builders.DirectorCocina;
-import Builders.DirectorLavadora;
-import Builders.DirectorRefrigeradora;
-import Builders.GinebraBuilder;
-import Builders.LavadoraLMA70200WGAB0Builder;
-import Builders.LavadoraLMD75B0Builder;
-import Builders.LavadoraWMC1786SXWW3Builder;
-import Builders.RDE235UWABBuilder;
-import Builders.RDE250FXJBBuilder;
-import Builders.RefrigeradoraBuilder;
-import Modelo.ArticuloLineaBlanca;
+import FactoryMethod.Andalucia;
+import FactoryMethod.CocinaInduccionFactory;
+import FactoryMethod.LavadoraFactory;
+import FactoryMethod.DirectorCocina;
+import FactoryMethod.DirectorLavadora;
+import FactoryMethod.RefrigeradoraFactory;
+import FactoryMethod.Ginebra;
+import FactoryMethod.LMA70200WGAB0;
+import FactoryMethod.LMD75B0;
+import FactoryMethod.WMC1786SXWW3;
+import FactoryMethod.RDE235UWAB;
+import FactoryMethod.RDE250FXJB;
+import FactoryMethod.RefrigeradoraFactory;
+import Modelo.Articulo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,50 +36,50 @@ public class ControllerAdmin {
     public ControllerAdmin() {
         this.cnx = new ConexionPostgresql();
     }
-    public ObservableList<ArticuloLineaBlanca> consultaArticulos(String comando) throws SQLException {
+    public ObservableList<Articulo> consultaArticulos(String comando) throws SQLException {
         ObservableList productos = null;
-        ArrayList<ArticuloLineaBlanca> c = new ArrayList<>();
+        ArrayList<Articulo> c = new ArrayList<>();
         PreparedStatement statement = cnx.getCnx().prepareStatement(comando);
         ResultSet result = statement.executeQuery();
         
         DirectorCocina dc = new DirectorCocina();
-        DirectorRefrigeradora dr = new DirectorRefrigeradora();
+        RefrigeradoraFactory dr = new RefrigeradoraFactory();
         DirectorLavadora dl = new DirectorLavadora();
         
         while(result.next()) {
                      
             if(result.getString("nombre").equals("Cocina de induccion Andalucia")){
-                CocinaInduccionBuilder build = new AndaluciaBuilder();
+                CocinaInduccionFactory build = new Andalucia();
                 dc.setCocinaInduccionBuilder(build);
                 dc.construirCocina();
                 c.add(dc.getCocina());
             }else if(result.getString("nombre").equals("Cocina de induccion Ginebra")){
-                CocinaInduccionBuilder build = new GinebraBuilder();
+                CocinaInduccionFactory build = new Ginebra();
                 dc.setCocinaInduccionBuilder(build);
                 dc.construirCocina();
                 c.add(dc.getCocina());
             }else if(result.getString("nombre").equals("Refrigeradora RDE235UWAB")){
-                RefrigeradoraBuilder build = new RDE235UWABBuilder();
+                RefrigeradoraFactory build = new RDE235UWAB();
                 dr.setRefrigeradoraBuilder(build);
                 dr.construirRefrigeradora();
                 c.add(dr.getRefrigeradora());
             }else if(result.getString("nombre").equals("Refrigeradora RDE250FXJB")){
-                RefrigeradoraBuilder build = new RDE250FXJBBuilder();
+                RefrigeradoraFactory build = new RDE250FXJB();
                 dr.setRefrigeradoraBuilder(build);
                 dr.construirRefrigeradora();
                 c.add(dr.getRefrigeradora());
             }else if(result.getString("nombre").equals("Lavadora LMD75B0")){
-                LavadoraBuilder build = new LavadoraLMD75B0Builder();
+                LavadoraFactory build = new LMD75B0();
                 dl.setConstructorLavadoras(build);
                 dl.construirLavadora();
                 c.add(dl.getLavadora());
             }else if(result.getString("nombre").equals("Lavadora LMA70200WGAB0")){
-                LavadoraBuilder build = new LavadoraLMA70200WGAB0Builder();
+                LavadoraFactory build = new LMA70200WGAB0();
                 dl.setConstructorLavadoras(build);
                 dl.construirLavadora();
                 c.add(dl.getLavadora());
             }else if(result.getString("nombre").equals("Lavadora WMC1786SXWW3")){
-                LavadoraBuilder build = new LavadoraWMC1786SXWW3Builder();
+                LavadoraFactory build = new WMC1786SXWW3();
                 dl.setConstructorLavadoras(build);
                 dl.construirLavadora();
                 c.add(dl.getLavadora());
@@ -114,18 +114,18 @@ public class ControllerAdmin {
 //        ResultSet result = statement.executeQuery();
 //        
 //        DirectorCocina dc = new DirectorCocina();
-//        DirectorRefrigeradora dr = new DirectorRefrigeradora();
+//        RefrigeradoraFactory dr = new RefrigeradoraFactory();
 //        DirectorLavadora dl = new DirectorLavadora();
 //        
 //        while(result.next()) {
 //                     
 //            if(result.getString("nombre").equals("Cocina de induccion Andalucia")){
-//                CocinaInduccionBuilder build = new AndaluciaBuilder();
+//                CocinaInduccionFactory build = new Andalucia();
 //                dc.setCocinaInduccionBuilder(build);
 //                dc.construirCocina();
 //                c.add(dc.getCocina());
 //            }else if(result.getString("nombre").equals("Cocina de induccion Ginebra")){
-//                CocinaInduccionBuilder build = new GinebraBuilder();
+//                CocinaInduccionFactory build = new Ginebra();
 //                dc.setCocinaInduccionBuilder(build);
 //                dc.construirCocina();
 //                c.add(dc.getCocina());

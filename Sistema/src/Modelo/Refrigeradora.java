@@ -9,7 +9,7 @@ package Modelo;
  *
  * @author JuanJose FS
  */
-public class Refrigeradora extends ArticuloLineaBlanca{
+public class Refrigeradora extends Articulo{
     private int cantidadPuertas;
     private int capacidad;
     private String filtroAgua;

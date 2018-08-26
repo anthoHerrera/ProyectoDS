@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Builders;
+package FactoryMethod;
 
 /**
  *
  * @author gabpa
  */
 
-public class LavadoraLMD75B0Builder extends LavadoraBuilder{
+public class LMD75B0 extends LavadoraFactory{
 	
 	@Override
 	public void construirNucleo() {

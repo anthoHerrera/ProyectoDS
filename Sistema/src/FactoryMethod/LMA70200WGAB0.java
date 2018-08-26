@@ -3,30 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Builders;
+package FactoryMethod;
 
 /**
  *
  * @author gabpa
  */
-public class LavadoraWMC1786SXWW3Builder extends LavadoraBuilder{
-	
+public class LMA70200WGAB0 extends LavadoraFactory{
+
 	@Override
 	public void construirNucleo() {
-		lavadora.setCapacidad(17);
-		lavadora.setNivelesTemperatura(5);
+		lavadora.setCapacidad(20);
+		lavadora.setNivelesTemperatura(3);
 	}
 
 	@Override
 	public void construirModelo() {
-		lavadora.setNombre("LavadoraWMC1786SXWW3");
+		lavadora.setNombre("LavadoraLMA70200WGAB0");
 		lavadora.setMarca("Mabe");
-		lavadora.setPrecio(350);
+		lavadora.setPrecio(600);
 	}
 
 	@Override
 	public void construirDescripcion() {
-		lavadora.setDescripcion("Carga Frontal, Ciclo steam assist");
+		lavadora.setDescripcion("Automática, Tecnología Aqua Saver");
 	}
+	
+	
+	
+	
 	
 }

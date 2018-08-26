@@ -9,11 +9,18 @@ package Modelo;
  *
  * @author JuanJose FS
  */
-public class ArticuloLineaBlanca {
+public abstract class Articulo {
     protected String nombre;
     protected String descripcion;
     protected String marca;
     protected int precio;
+
+    public Articulo(String nombre, String descripcion, String marca, int precio) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.marca = marca;
+        this.precio = precio;
+    }
 	
 
     public String getNombre() {

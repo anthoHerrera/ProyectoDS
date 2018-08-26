@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Builders;
+package FactoryMethod;
 
 import Modelo.CocinaInduccion;
 
@@ -11,7 +11,7 @@ import Modelo.CocinaInduccion;
  *
  * @author JuanJose FS
  */
-public class GinebraBuilder extends CocinaInduccionBuilder{
+public class Ginebra extends CocinaInduccionFactory{
 
      @Override
     public void buildModel() {

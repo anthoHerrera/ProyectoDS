@@ -5,10 +5,10 @@
  */
 package Vista.superViews;
 
-import Builders.DirectorLavadora;
-import Builders.LavadoraLMA70200WGAB0Builder;
-import Builders.LavadoraLMD75B0Builder;
-import Builders.LavadoraWMC1786SXWW3Builder;
+import FactoryMethod.DirectorLavadora;
+import FactoryMethod.LMA70200WGAB0;
+import FactoryMethod.LMD75B0;
+import FactoryMethod.WMC1786SXWW3;
 import Controlador.ConexionPostgresql;
 import Modelo.Lavadora;
 import java.sql.PreparedStatement;
@@ -124,15 +124,15 @@ public class AgregarObjetoView {
 		switch(modelo){
 			
 			case "Lavadora LMA70200WGAB0":
-				director.setConstructorLavadoras(new LavadoraLMA70200WGAB0Builder() );
+				director.setConstructorLavadoras(new LMA70200WGAB0() );
 				director.construirLavadora();
 				lavadora = director.getLavadora();
 			case "Lavadora LMD75B0":
-				director.setConstructorLavadoras( new LavadoraLMD75B0Builder());
+				director.setConstructorLavadoras(new LMD75B0());
 				director.construirLavadora();
 				lavadora = director.getLavadora();
 			case "Lavadora WMC1786SXWW3":
-				director.setConstructorLavadoras(new LavadoraWMC1786SXWW3Builder() );
+				director.setConstructorLavadoras(new WMC1786SXWW3() );
 				director.construirLavadora();
 				lavadora = director.getLavadora();
 		}

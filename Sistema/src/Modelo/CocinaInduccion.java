@@ -9,11 +9,19 @@ package Modelo;
  *
  * @author JuanJose FS
  */
-public class CocinaInduccion extends ArticuloLineaBlanca{
-    private String tamano;
-    private String potenciaTotal;
-    private int inductores;
-    private String voltaje;
+public class CocinaInduccion extends Articulo{
+    protected String tamano;
+    protected String potenciaTotal;
+    protected int inductores;
+    protected String voltaje;
+
+    public CocinaInduccion(String nombre, String descripcion, String  marca, int precio, String tamano, String potenciaTotal, int inductores, String voltaje ) {
+        super(nombre, descripcion, marca, precio);
+        this.tamano = tamano;
+        this.potenciaTotal = potenciaTotal;
+        this.inductores = inductores;
+        this.voltaje = voltaje;
+    }
 
     public String getTamano() {
         return tamano;

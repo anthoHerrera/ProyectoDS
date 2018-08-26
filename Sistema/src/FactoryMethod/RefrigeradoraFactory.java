@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Builders;
+package FactoryMethod;
 
 import Modelo.Refrigeradora;
 
@@ -11,7 +11,7 @@ import Modelo.Refrigeradora;
  *
  * @author JuanJose FS
  */
-public abstract class RefrigeradoraBuilder {
+public abstract class RefrigeradoraFactory {
     protected Refrigeradora fridge;
     
     public void crearRefrigeradora(){

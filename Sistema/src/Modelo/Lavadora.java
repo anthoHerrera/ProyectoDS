@@ -9,7 +9,7 @@ package Modelo;
  *
  * @author JuanJose FS
  */
-public class Lavadora extends ArticuloLineaBlanca{
+public class Lavadora extends Articulo{
     private int capacidad;
     private int nivelesTemperatura;
 

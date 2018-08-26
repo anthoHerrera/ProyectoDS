@@ -3,31 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Builders;
+package FactoryMethod;
 
 /**
  *
  * @author JuanJose FS
  */
-public class RDE235UWABBuilder extends RefrigeradoraBuilder{
+public class RDE250FXJB extends RefrigeradoraFactory{
 
     @Override
     public void buildModel() {
-        fridge.setNombre("Refrigeradora RDE235UWAB");
-        fridge.setMarca("Mabe");
-        fridge.setDescripcion("Refrigeradora ultima gama");
+        fridge.setNombre("Refrigeradora RDE250FXJB");
+        fridge.setMarca("Whirpool");
+        fridge.setDescripcion("Refrigeradora ultima generacion");
     }
 
     @Override
     public void buildPuertas() {
         fridge.setCantidadPuertas(2);
-        fridge.setCapacidad(25);
-        fridge.setPrecio(1235);
+        fridge.setCapacidad(20);
+        fridge.setPrecio(1500);
     }
 
     @Override
     public void buildFiltros() {
-        fridge.setFiltroAgua("Con filtro");
+        fridge.setFiltroAgua("Filtro extra");
     }
+    
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Builders;
+package FactoryMethod;
 
 import Modelo.Lavadora;
 
@@ -11,7 +11,7 @@ import Modelo.Lavadora;
  *
  * @author gabpa
  */
-public abstract class LavadoraBuilder {
+public abstract class LavadoraFactory {
 	
 	protected Lavadora lavadora;
 	
