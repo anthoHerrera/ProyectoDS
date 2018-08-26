@@ -1,5 +1,5 @@
 
-package Strategy;
+package Strategy.pago;
 
 /**
  *
