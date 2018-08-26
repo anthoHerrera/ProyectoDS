@@ -90,13 +90,13 @@ public class AgregarObjetoView {
 		
 		contenedorBotones.getChildren().addAll(agregar,cerrar);
 		
-		agregar.setOnAction(e->{
-			try {
-				validateSelection();
-			} catch (SQLException ex) {
-				Logger.getLogger(AgregarObjetoView.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		});
+//		agregar.setOnAction(e->{
+//			try {
+//				validateSelection();
+//			} catch (SQLException ex) {
+//				Logger.getLogger(AgregarObjetoView.class.getName()).log(Level.SEVERE, null, ex);
+//			}
+//		});
 		
 		cerrar.setOnAction(e->stage.close());
 		

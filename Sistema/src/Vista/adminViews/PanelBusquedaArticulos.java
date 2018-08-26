@@ -97,6 +97,11 @@ public final class PanelBusquedaArticulos {
             if (articulos != null) {
                 tabla.setItems(articulos);
                 tabla.setEditable(false);
+                
+                TableColumn id = new TableColumn("IdArticulo");
+                id.setMinWidth(200);
+                id.setCellValueFactory(
+                        new PropertyValueFactory<>("idArticulo"));
 
                 TableColumn nombre = new TableColumn("Nombre");
                 nombre.setMinWidth(200);
@@ -158,7 +163,7 @@ public final class PanelBusquedaArticulos {
                 temp.setCellValueFactory(
                         new PropertyValueFactory<>("nivelesTemperatura"));
 
-                tabla.getColumns().addAll(nombre, descripcion, marca, precio, tamano, potencia, inductores, voltaje, puertas, capacidad, filtro, temp);
+                tabla.getColumns().addAll(id,nombre, descripcion, marca, precio, tamano, potencia, inductores, voltaje, puertas, capacidad, filtro, temp);
             } else {
                 showError();
             }
