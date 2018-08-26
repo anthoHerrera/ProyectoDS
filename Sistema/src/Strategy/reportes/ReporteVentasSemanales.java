@@ -17,44 +17,38 @@ import javafx.stage.Stage;
  *
  * @author gabpa
  */
-public final class ReporteVentasSemanales implements Reporte{
-	
-	//VENTAS SEMANALES POR VENDEDOR
-	//IdVendedor,Cantidad Ventas, Monto
-	
-	private final VBox root;
-	private Stage stage;
-	private Scene scene;
-	private Button cerrar;
-	private Label titulo;
-	private TableView<> tabla;
-	
-	public ReporteVentasSemanales(){
-		root = new VBox(20);
-		
-		setupPanes();
-		generarReporte();
-		setupStage();
-	}
-	
-	
-	private void setupPanes(){
-		root.setAlignment(Pos.CENTER);
-		root.setPadding(new Insets(10,10,10,10));
-		
-		
-	}
-	
-	@Override
-	public void generarReporte() {
-		
-	}
-	
-	private void setupStage(){
-		
-	}
-	
-	
-	
-	
+public final class ReporteVentasSemanales implements Reporte {
+
+    //VENTAS SEMANALES POR VENDEDOR
+    //IdVendedor,Cantidad Ventas, Monto
+    private final VBox root;
+    private Stage stage;
+    private Scene scene;
+    private Button cerrar;
+    private Label titulo;
+    //private TableView<> tabla;
+
+    public ReporteVentasSemanales() {
+        root = new VBox(20);
+
+        setupPanes();
+        generarReporte();
+        setupStage();
+    }
+
+    private void setupPanes() {
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(10, 10, 10, 10));
+
+    }
+
+    @Override
+    public void generarReporte() {
+
+    }
+
+    private void setupStage() {
+
+    }
+
 }

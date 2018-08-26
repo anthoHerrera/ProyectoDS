@@ -31,6 +31,8 @@ public class ControllerGerente {
         ArrayList<Cliente> c = new ArrayList<>();
         PreparedStatement statement = cnx.getCnx().prepareStatement("select * from cliente");
         ResultSet result = statement.executeQuery();
+        //PreparedStatement prueba = cnx.getCnx().prepareStatement("select count (idarticulo) from articulo where nombre like 'Lavadora%'");
+        
         while(result.next()) {
             Cliente client = new Cliente(result.getString("cedula"), result.getString("nombre"), 
                     result.getString("cedula"), result.getBoolean("isVisible"));
