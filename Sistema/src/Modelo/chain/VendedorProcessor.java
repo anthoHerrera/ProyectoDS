@@ -10,7 +10,7 @@ package modelo.chain;
  * @author User
  */
 public abstract class VendedorProcessor {
-    private VendedorProcessor nextProcessor;
+    private VendedorProcessor nextProcessor = null;
 
     public void setNext(VendedorProcessor next){
         this.nextProcessor = next;

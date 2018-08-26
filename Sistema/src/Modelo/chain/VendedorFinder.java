@@ -16,6 +16,7 @@ public class VendedorFinder extends VendedorProcessor{
 
     public VendedorFinder(Vendedor vendedor) {
         this.vendedor = vendedor;
+        this.isFree = true;
     }
     
     public boolean isFree() {
