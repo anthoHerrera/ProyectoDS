@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo.chain;
+package Modelo.chain;
 
 /**
  *
@@ -11,6 +11,16 @@ package modelo.chain;
  */
 public abstract class VendedorProcessor {
     private VendedorProcessor nextProcessor = null;
+    private Vendedor vendedor;
+
+    public VendedorProcessor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+    
 
     public void setNext(VendedorProcessor next){
         this.nextProcessor = next;

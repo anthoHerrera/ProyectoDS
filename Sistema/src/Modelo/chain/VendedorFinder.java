@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo.chain;
+package Modelo.chain;
 
 /**
  *
@@ -11,13 +11,13 @@ package modelo.chain;
  */
 public class VendedorFinder extends VendedorProcessor{
 
-    private boolean isFree;
+    private boolean isFree = true;
     private Vendedor vendedor;
 
     public VendedorFinder(Vendedor vendedor) {
-        this.vendedor = vendedor;
-        this.isFree = true;
+        super(vendedor);
     }
+
     
     public boolean isFree() {
         return isFree;
@@ -30,9 +30,12 @@ public class VendedorFinder extends VendedorProcessor{
     @Override
     public VendedorProcessor checkFree() {
         if(this.isFree) {
+            this.isFree = false;
             return this;
         }
         return this.checkNext();
     }
+    
+    
     
 }

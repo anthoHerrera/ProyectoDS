@@ -22,9 +22,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import modelo.chain.Vendedor;
-import modelo.chain.VendedorFinder;
-import modelo.chain.VendedorProcessor;
+import Modelo.chain.Vendedor;
+import Modelo.chain.VendedorFinder;
+import Modelo.chain.VendedorProcessor;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -116,6 +117,9 @@ public class CrearCliente {
             st.setBoolean(4, cliente.isIsVisible());
             st.executeUpdate();
             st.close();
+            Vendedor atiende = buscarVendedor();
+            System.out.println(atiende.getNombre());
+            showAlert(atiende.getNombre());
             crearCliente.close();
         } catch (SQLException ex) {
             Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,5 +156,18 @@ public class CrearCliente {
         } catch (SQLException ex) {
             Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public Vendedor buscarVendedor(){
+        return this.primerVendedor.checkFree().getVendedor();
+    }
+    
+    public void showAlert(String nombreVendedor){
+	Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Vendedor asignado");
+        alert.setHeaderText("Vendedor asignado:");
+        alert.setContentText(nombreVendedor);
+        alert.showAndWait();
+
     }
 }
