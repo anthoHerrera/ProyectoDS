@@ -70,15 +70,15 @@ public final class ReporteVentasSemanales implements Reporte{
 		tabla.setItems(reportes);
 		tabla.setEditable(false);
 		
-		TableColumn idEmpleado = new TableColumn("empl");
+		TableColumn idEmpleado = new TableColumn("Empleado");
 			idEmpleado.setMinWidth(200);
 			idEmpleado.setCellValueFactory( new PropertyValueFactory<>("idEmpleado"));
 			
-		TableColumn NumTransacciones = new TableColumn("cant");
+		TableColumn NumTransacciones = new TableColumn("Cantidad Ventas");
                 NumTransacciones.setMinWidth(200);
                 NumTransacciones.setCellValueFactory( new PropertyValueFactory<>("cantidadVentas"));
 				
-		TableColumn TotalVendido = new TableColumn("sumaxd");
+		TableColumn TotalVendido = new TableColumn("Total Vendido");
 			TotalVendido.setMinWidth(200);
 			TotalVendido.setCellValueFactory( new PropertyValueFactory<>("totalVendido"));
 			
@@ -104,27 +104,25 @@ public final class ReporteVentasSemanales implements Reporte{
 		try {
 			ConexionPostgresql conexion = new ConexionPostgresql();
 			
-			String query = "select t.idempleado as empl, sq.cantidad as cant, sq2.suma as sumaxd \n"
-						 + "from transaccion t, (select t.idempleado as empleado, count(t.idtransaccion) as cantidad \n"
-												+ "from transaccion t \n where t.tipo like ?"
-												+ "group by empleado) sq , (select t.idtransaccion as transac, sum(a.precio) as suma \n"
-																		 + "from transaccion t \n"
-																		 + "join  articulostransaccion at on at.idtransaccion = t.idtransaccion \n"
-																		 + "join articulo a on a.idarticulo = at.idarticulo \n"
-																		 + "where t.tipo like ? \n group by transac) sq2 \n"
-						+ "where t.idempleado = sq.empleado and t.idtransaccion = sq2.transac";
+			String query = "select t.idempleado as empl,count(t.idtransaccion) as cant, sum(sq2.suma) as suma \n"
+						 + "from transaccion t, (select t.idtransaccion as transac, sum(a.precio) as suma \n"
+												 + "from transaccion t \n"
+												 + "join  articulostransaccion at on at.idtransaccion = t.idtransaccion \n"
+												 + "join articulo a on a.idarticulo = at.idarticulo \n"
+												 + "where t.tipo like ? \n group by transac) sq2 \n"
+						+ "where t.idtransaccion = sq2.transac \n"
+						+ "group by empl";
 			
 			
 			PreparedStatement statements = conexion.getCnx().
 					prepareStatement(query);
 			statements.setString(1, "venta");
-			statements.setString(2, "venta");
 			
 			ResultSet result = statements.executeQuery();
 			while(result.next()){
 				String empleado = result.getString("empl");
 				Integer numTransacciones = result.getInt("cant");
-				float total = result.getFloat("sumaxd");
+				float total = result.getFloat("suma");
 				
 				ReporteSemanalClass reporte = new ReporteSemanalClass(empleado,numTransacciones, total);
 				lista.add(reporte);
@@ -156,5 +154,6 @@ public final class ReporteVentasSemanales implements Reporte{
         alert.setContentText("El sistema no ha podido mostrar el reporte");
         alert.showAndWait();
     }
-	
+
+
 }
