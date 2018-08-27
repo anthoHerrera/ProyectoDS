@@ -6,8 +6,7 @@
 package Controlador;
 
 import Modelo.FactoryMethod.Articulo;
-import java.util.List;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,11 +47,11 @@ public class ControllerAdminTest {
 		System.out.println("consultaArticulos");
 		String comando = "";
 		ControllerAdmin instance = new ControllerAdmin();
-		ObservableList<Articulo> expResult = null;
-		ObservableList<Articulo> result = instance.consultaArticulos(comando);
+		ArrayList<Articulo> expResult = instance.consultaArticulos(comando);
+		ArrayList<Articulo> result = instance.consultaArticulos(comando);
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		
 	}
 
 	/**
@@ -65,8 +64,7 @@ public class ControllerAdminTest {
 		ControllerAdmin instance = new ControllerAdmin();
 		String result = instance.cuentaArticulos(comando);
 		assertNull(result);
-		// TODO review the generated test code and remove the default call to fail.
-		//fail("The test case is a prototype.");
+		
 	}
 
 	

@@ -21,8 +21,8 @@ public class ConexionPostgresql {
 
     public ConexionPostgresql() {
         try {
-            cnx = DriverManager.getConnection("jdbc:postgresql://localhost:1234/lineablancasa",
-                     "postgres", "889juanjo");
+            cnx = DriverManager.getConnection("jdbc:postgresql://localhost/lineablancasa",
+                     "postgres", "root");
         } catch (SQLException ex) {
             Logger.getLogger(ConexionPostgresql.class.getName()).log(Level.SEVERE, null, ex);
         }
