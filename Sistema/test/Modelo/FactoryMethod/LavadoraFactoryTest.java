@@ -44,14 +44,21 @@ public class LavadoraFactoryTest {
     public void testCreateLavadora() {
         System.out.println("createLavadora");
         String idArticulo = "la2";
+        String idArticulo1 = "la1";
         String nombre = "lavadora prueba";
+        String nombre1 = "lavadora prueba2";
         String descripcion = "sistema aquasaver";
+        String descripcion1 = "sistema aquasaver";
         String marca = "mabe";
+        String marca1 = "mabe";
         double precio = 100.0;
+        double precio1 = 100.0;
         int capacidad = 4;
+        int capacidad1 = 5;
         int nivelesTemperatura = 2;
+        int nivelesTemperatura1 = 1;
         LavadoraFactory instance = new LavadoraFactory();
-        Lavadora expResult = null;
+        Lavadora expResult = instance.createLavadora(idArticulo1, nombre1, descripcion1, marca1, precio1, capacidad1, nivelesTemperatura1);
         Lavadora result = instance.createLavadora(idArticulo, nombre, descripcion, marca, precio, capacidad, nivelesTemperatura);
         assertNotSame(expResult, result);
         
