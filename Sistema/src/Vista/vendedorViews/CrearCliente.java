@@ -8,6 +8,7 @@ package Vista.vendedorViews;
 import Controlador.ConexionPostgresql;
 import Modelo.Cliente;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import Modelo.chain.Vendedor;
+import Modelo.chain.VendedorFinder;
+import Modelo.chain.VendedorProcessor;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -34,9 +39,10 @@ public class CrearCliente {
     private TextField cedula, nombre, telefono;
     private Button crear;
     private ConexionPostgresql conexion;
+    private VendedorProcessor primerVendedor;
     
     public CrearCliente(){
-        
+        conexion = new ConexionPostgresql();
         setUp();
         
         
@@ -45,7 +51,7 @@ public class CrearCliente {
     public void setUp(){
         root = new VBox();
         root.setPadding(new Insets(20,20,20,20));
-        
+        cargarVendedores();
         crearCliente = new Stage();
         crearCliente.setResizable(false);
         crearCliente.setTitle("Ingresar Cliente");
@@ -102,7 +108,7 @@ public class CrearCliente {
     }
     
     public void ingresarCliente(Cliente cliente) {
-        conexion = new ConexionPostgresql();
+        
         try {
             PreparedStatement st = conexion.getCnx().prepareStatement("INSERT INTO cliente (cedula, nombre, telefono, isvisible) VALUES (?, ?, ?, ?)");
             st.setString(1, cliente.getCedula());
@@ -111,6 +117,9 @@ public class CrearCliente {
             st.setBoolean(4, cliente.isIsVisible());
             st.executeUpdate();
             st.close();
+            Vendedor atiende = buscarVendedor();
+            System.out.println(atiende.getNombre());
+            showAlert(atiende.getNombre());
             crearCliente.close();
         } catch (SQLException ex) {
             Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,5 +130,44 @@ public class CrearCliente {
     
     public Cliente crearCliente(){
         return new Cliente(cedula.getText(), nombre.getText(),telefono.getText(), true);
+    }
+    
+    public void cargarVendedores() {
+        try {
+            PreparedStatement st = conexion.getCnx().prepareStatement("SELECT * FROM usuario WHERE rol = ?");
+            st.setString(1, "Vendedor");
+            VendedorProcessor processorAnterior = null;
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                String nombre = rs.getString("nombre");
+                String telefono = rs.getString("telefono");
+                Vendedor vendedor = new Vendedor(nombre, telefono);
+                System.out.println("nombre: "+nombre+" telefono: "+telefono);
+                VendedorProcessor processor = new VendedorFinder(vendedor);
+                
+                if(processorAnterior != null){
+                    processorAnterior.setNext(processor);
+                }
+                else {
+                    this.primerVendedor = processor;
+                }
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public Vendedor buscarVendedor(){
+        return this.primerVendedor.checkFree().getVendedor();
+    }
+    
+    public void showAlert(String nombreVendedor){
+	Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Vendedor asignado");
+        alert.setHeaderText("Vendedor asignado:");
+        alert.setContentText(nombreVendedor);
+        alert.showAndWait();
+
     }
 }

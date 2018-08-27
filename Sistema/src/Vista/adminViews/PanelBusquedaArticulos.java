@@ -74,7 +74,7 @@ public final class PanelBusquedaArticulos {
         hbox.getChildren().addAll(ingreso, cb, boton);
         titulo = new Label("Productos");
         titulo.setFont(new Font("Cambria", 40));
-        generarTabla("select * from articulo where nombre like 'pan'");
+        generarTabla("select * from articulo where idarticulo like '//'");
         regresar = new Button("REGRESAR");
 
         regresar.setPrefSize(Ctes.BUT_WIDTH + 60, Ctes.BUT_HEIGHT - 40);
@@ -87,7 +87,7 @@ public final class PanelBusquedaArticulos {
 
     public void setUpComboBoxes() {
         cb = new ComboBox<>();
-        cb.getItems().addAll("Todos", "Lavadoras", "Cocinas", "Refrigeradoras");
+        cb.getItems().addAll("Todos", "Lavadoras", "Cocinas", "Refrigeradoras","Otros genericos");
     }
 
     private void generarTabla(String comando) {
@@ -206,6 +206,12 @@ public final class PanelBusquedaArticulos {
                     root.getChildren().clear();
                     tabla.getColumns().clear();
                     generarTabla("select * from articulo where nombre like 'Refrigeradora%'");
+                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    break;
+                case "Otros genericos":
+                    root.getChildren().clear();
+                    tabla.getColumns().clear();
+                    generarTabla("select * from articulo where idarticulo like 'otro%'");
                     root.getChildren().addAll(titulo, hbox, tabla, regresar);
                     break;
                 default:

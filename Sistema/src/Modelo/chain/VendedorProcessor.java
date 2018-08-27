@@ -3,24 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package chain;
+package Modelo.chain;
 
 /**
  *
  * @author User
  */
 public abstract class VendedorProcessor {
-    private VendedorProcessor nextProcessor;
+    private VendedorProcessor nextProcessor = null;
+    private Vendedor vendedor;
+
+    public VendedorProcessor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+    
 
     public void setNext(VendedorProcessor next){
         this.nextProcessor = next;
     }
     
-    public abstract boolean checkFree();
+    public abstract VendedorProcessor checkFree();
     
-    protected boolean checkNext(){
+    protected VendedorProcessor checkNext(){
         if (this.nextProcessor == null) {
-            return false;
+            return null;
         }
         return this.nextProcessor.checkFree();
     }
