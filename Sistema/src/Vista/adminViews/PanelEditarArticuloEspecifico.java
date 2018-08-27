@@ -7,7 +7,6 @@ package Vista.adminViews;
 
 import Controlador.ControllerAdmin;
 import Modelo.Ctes;
-import Vista.SceneOrganizer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,32 +27,27 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author JuanjoseFS
+ * @author JuanJose FS
  */
-public final class PanelAgregaArticulos {
-
+public class PanelEditarArticuloEspecifico {
+    
     private final VBox root;
-    private HBox h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12;
+    private HBox h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13;
     private Label titulo,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12;
     private TextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12;
-    private Button agregar;
-    private Stage addarticuloStage;
+    private Button agregar,regresar;
     private Scene scene;
     private ControllerAdmin controlador;
-
-    public PanelAgregaArticulos() {
+    private PanelModificarArticulos p;
+    
+    public PanelEditarArticuloEspecifico(PanelModificarArticulos p) {
         root = new VBox(20);
+        this.p = p;
         setUp();
-        setStage();
     }
     
-    public void setStage() {
-        addarticuloStage = new Stage();
-        scene = new Scene(this.getRoot(), Ctes.APP_WIDHT - 250, Ctes.APP_HEIGHT);
-        addarticuloStage.setScene(scene);
-        addarticuloStage.setTitle("Agregar articulos");
-        addarticuloStage.setResizable(false);
-        addarticuloStage.showAndWait();
+    public void setScene() {
+        p.getModificarStage().setScene(p.getScene());
     }
 
     public void setUp() {
@@ -65,7 +59,7 @@ public final class PanelAgregaArticulos {
         
         h1 = new HBox(10);h2 = new HBox(10);h3 = new HBox(10);h4 = new HBox(10);
         h5 = new HBox(10);h6 = new HBox(10);h7 = new HBox(10);h8 = new HBox(10);
-        h9 = new HBox(10);h10 = new HBox(10);h11 = new HBox(10);h12 = new HBox(10);    
+        h9 = new HBox(10);h10 = new HBox(10);h11 = new HBox(10);h12 = new HBox(10);h13 = new HBox(20);    
         
         l1 = new Label("Nombre:");l2 = new Label("Descripcion:");l3 = new Label("Marca:");l4 = new Label("Precio:");
         l5 = new Label("Tamano:");l6 = new Label("Potencia total:");l7 = new Label("Inductores:");
@@ -76,15 +70,19 @@ public final class PanelAgregaArticulos {
         t5 = new TextField();t6 = new TextField();t7 = new TextField();t8 = new TextField();
         t9 = new TextField();t10 = new TextField();t11 = new TextField();t12 = new TextField();
         
+        agregar = new Button("Agregar articulo");
+        regresar = new Button("Regresar");
+        
         h1.getChildren().addAll(l1,t1);h2.getChildren().addAll(l2,t2);h3.getChildren().addAll(l3,t3);h4.getChildren().addAll(l4,t4);
         h5.getChildren().addAll(l5,t5);h6.getChildren().addAll(l6,t6);h7.getChildren().addAll(l7,t7);h8.getChildren().addAll(l8,t8);
         h9.getChildren().addAll(l9,t9);h10.getChildren().addAll(l10,t10);h11.getChildren().addAll(l11,t11);h12.getChildren().addAll(l12,t12);
+        h13.getChildren().addAll(agregar,regresar);
         
-        agregar = new Button("Agregar articulo");
+        
         
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: lavender");
-        root.getChildren().addAll(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,agregar);
+        root.getChildren().addAll(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13);
         
         agregar.setOnAction(e-> {
             try {
@@ -93,6 +91,9 @@ public final class PanelAgregaArticulos {
                 Logger.getLogger(PanelAgregaArticulos.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
+        regresar.setOnAction(e-> setScene());
+        
 //        cocina = new VBox(20);
 //        coc = new Label("Cocinas de induccion");
 //        titulo.setFont(new Font("Comic Sans", 24));
@@ -149,7 +150,7 @@ public final class PanelAgregaArticulos {
                 controlador.agregaArticulo(atributos,"otro"+id);
                 showAlert("otro"+id);
             }
-            addarticuloStage.close();
+            setScene();
         }
     }
     
@@ -195,5 +196,4 @@ public final class PanelAgregaArticulos {
     public Pane getRoot() {
         return root;
     }
-
 }

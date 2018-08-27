@@ -29,7 +29,7 @@ public class PanelEliminarArticulos {
     private ComboBox<String> combo;
     private BorderPane root;
     private HBox hbox;
-    private Button eliminar,regresar;
+    private Button eliminar;
     private ControllerAdmin controlador;
     private Stage eliminarStage;
     private Scene scene;
@@ -44,7 +44,7 @@ public class PanelEliminarArticulos {
     
     public void setStage() {
         eliminarStage = new Stage();
-        scene = new Scene(this.getRoot(), Ctes.APP_WIDHT, Ctes.APP_HEIGHT - 150);
+        scene = new Scene(this.getRoot(), Ctes.APP_WIDHT-600, Ctes.APP_HEIGHT - 550);
         eliminarStage.setScene(scene);
         eliminarStage.setTitle("Eliminar Articulos");
         eliminarStage.setResizable(false);
@@ -64,13 +64,13 @@ public class PanelEliminarArticulos {
                 Logger.getLogger(PanelEliminarArticulos.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        regresar = new Button("Regresar");
-        regresar.setOnAction(e-> eliminarStage.close());
         root.setCenter(combo);
         hbox = new HBox(30);
         hbox.setAlignment(Pos.CENTER);
-        hbox.getChildren().addAll(eliminar,regresar);
+        hbox.getChildren().addAll(eliminar);
         root.setBottom(hbox);
+        root.setStyle("-fx-background-color: lavender");
+        
     }
     
     private void manejarEliminar() throws SQLException{

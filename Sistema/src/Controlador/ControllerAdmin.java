@@ -42,39 +42,23 @@ public class ControllerAdmin {
                 Articulo coc = cocina.createCocina(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"), result.getString("marca"),
                         result.getDouble("precio"), result.getString("tamano"), result.getString("potenciatotal"), result.getInt("inductores"), result.getString("voltaje"));
                 c.add(coc);
-<<<<<<< HEAD
-            } else if (result.getString("nombre").startsWith("Refrigeradora")) {
-=======
 
             }else if (result.getString("nombre").startsWith("Refrigeradora")) {
->>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
                 RefrigeradoraFactory refrigeradora = new RefrigeradoraFactory();
                 Articulo refri = refrigeradora.createRefrigeradora(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"),
                         result.getString("marca"), result.getDouble("precio"), result.getInt("cantidadpuertas"), result.getInt("capacidad"), result.getString("filtroagua"));
                 c.add(refri);
-<<<<<<< HEAD
-            } else if (result.getString("nombre").startsWith("Lavadora")) {
-=======
- 
+                
             }else if (result.getString("nombre").startsWith("Lavadora")) {
-
->>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
                 LavadoraFactory lavadora = new LavadoraFactory();
                 Articulo lav = lavadora.createLavadora(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"), result.getString("marca"),
                         result.getDouble("precio"), result.getInt("capacidad"), result.getInt("nivelestemperatura"));
                 c.add(lav);
-<<<<<<< HEAD
-            } else if (result.getString("idarticulo").startsWith("otro")) {
-                Articulo generico = new ArticuloGenerico(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"),
-                        result.getString("marca"), result.getDouble("precio"), result.getString("tamano"), result.getString("potenciatotal"),
-                        result.getInt("inductores"), result.getString("voltaje"), result.getInt("cantidadpuertas"), result.getInt("capacidad"),
-=======
-                
+
             }else if(result.getString("idarticulo").startsWith("otro")){
                 Articulo generico = new ArticuloGenerico(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"), 
                         result.getString("marca"), result.getDouble("precio"), result.getString("tamano"),result.getString("potenciatotal"), 
                         result.getInt("inductores"), result.getString("voltaje"), result.getInt("cantidadpuertas"), result.getInt("capacidad"), 
->>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
                         result.getString("filtroagua"), result.getInt("nivelestemperatura"));
                 c.add(generico);
             }
@@ -86,6 +70,11 @@ public class ControllerAdmin {
 
     public void eliminaArticulo(String id) throws SQLException {
         PreparedStatement statement = cnx.getCnx().prepareStatement("DELETE FROM articulo WHERE idarticulo='" + id+"'");
+        statement.executeUpdate();
+    }
+    
+    public void modificarArticulo(String id) throws SQLException{
+        PreparedStatement statement = cnx.getCnx().prepareStatement("UPDATE articulo SET idarticulo=?, nombre=?, descripcion=?, marca=?, precio=?, tamano=?, potenciatotal=?, inductores=?, voltaje=?, cantidadpuertas=?, capacidad=?, filtroagua=?, nivelestemperatura=?, isvisible=? WHERE idarticulo='"+id+"'");
         statement.executeUpdate();
     }
 
@@ -138,33 +127,7 @@ public class ControllerAdmin {
         statement.setBoolean(14, true);
         statement.executeUpdate();
 
-<<<<<<< HEAD
     }
 
-//    public ObservableList<ArticuloLineaBlanca> consultaLavadoras() throws SQLException {
-//        ObservableList productos = null;
-//        ArrayList<ArticuloLineaBlanca> c = new ArrayList<>();
-//        PreparedStatement statement = cnx.getCnx().prepareStatement("select * from articulo where nombre like 'Cocina%'");
-//        ResultSet result = statement.executeQuery();
-//        
-//        DirectorCocina dc = new DirectorCocina();
-//        RefrigeradoraFactory dr = new RefrigeradoraFactory();
-//        DirectorLavadora dl = new DirectorLavadora();
-//        
-//        while(result.next()) {
-//                     
-//            if(result.getString("nombre").equals("Cocina de induccion Andalucia")){
-//                CocinaInduccionFactory build = new Andalucia();
-//                dc.setCocinaInduccionBuilder(build);
-//                dc.construirCocina();
-//                c.add(dc.getCocina());
-//            }else if(result.getString("nombre").equals("Cocina de induccion Ginebra")){
-//                CocinaInduccionFactory build = new Ginebra();
-//                dc.setCocinaInduccionBuilder(build);
-//                dc.construirCocina();
-//                c.add(dc.getCocina());
-//            }
-=======
->>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
 }
 

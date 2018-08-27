@@ -42,7 +42,7 @@ public final class PanelBusquedaArticulos {
     private HBox hbox;
     private Label titulo, ingreso;
     private ComboBox<String> cb;
-    private Button regresar, boton,agregar,modificar,eliminar;
+    private Button boton,agregar,modificar,eliminar;
     private ControllerAdmin controlador;
     private ArrayList<Articulo> lista;
     private ObservableList<Articulo> articulos;
@@ -81,16 +81,14 @@ public final class PanelBusquedaArticulos {
         titulo = new Label("Productos");
         titulo.setFont(new Font("Cambria", 40));
         generarTabla("select * from articulo where idarticulo like '//'");
-        regresar = new Button("REGRESAR");
         agregar = new Button("Agregar articulo");
         modificar = new Button("Modificar articulo");
         eliminar = new Button("Eliminar articulo");
-        regresar.setPrefSize(Ctes.BUT_WIDTH + 60, Ctes.BUT_HEIGHT - 40);
 
         hbox.getChildren().addAll(ingreso, cb, boton,agregar,modificar,eliminar);
         root.setStyle("-fx-background-color: lavender");
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(titulo, hbox,tabla,regresar);
+        root.getChildren().addAll(titulo, hbox,tabla);
 
     }
 
@@ -183,21 +181,20 @@ public final class PanelBusquedaArticulos {
         }
     }
     
-    private void manejarActivacion(MouseEvent e){
-        eliminar.setDisable(false);
-        modificar.setDisable(false);
-        Callback<TableView<Articulo>,TableRow<Articulo>> a = tabla.getRowFactory();
-        for(Articulo art : tabla.getItems()){
-            
-        }
-    }
-    
+//    private void manejarActivacion(MouseEvent e){
+//        eliminar.setDisable(false);
+//        modificar.setDisable(false);
+//        Callback<TableView<Articulo>,TableRow<Articulo>> a = tabla.getRowFactory();
+//        for(Articulo art : tabla.getItems()){
+//            
+//        }
+//    }
+//    
     public VBox getRoot() {
         return root;
     }
 
     private void setUpButtons() {
-        regresar.setOnAction(e -> articuloStage.close());
         boton.setOnAction(e -> manejarBuscar());
         agregar.setOnAction(e -> new PanelAgregaArticulos());
         eliminar.setOnAction(e -> new PanelEliminarArticulos(this));
@@ -211,31 +208,31 @@ public final class PanelBusquedaArticulos {
                     root.getChildren().clear();
                     tabla.getColumns().clear();
                     generarTabla("select * from articulo");
-                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    root.getChildren().addAll(titulo, hbox, tabla);
                     break;
                 case "Cocinas":
                     root.getChildren().clear();
                     tabla.getColumns().clear();
                     generarTabla("select * from articulo where nombre like 'Cocina%'");
-                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    root.getChildren().addAll(titulo, hbox, tabla);
                     break;
                 case "Lavadoras":
                     root.getChildren().clear();
                     tabla.getColumns().clear();
                     generarTabla("select * from articulo where nombre like 'Lavadora%'");
-                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    root.getChildren().addAll(titulo, hbox, tabla);
                     break;
                 case "Refrigeradoras":
                     root.getChildren().clear();
                     tabla.getColumns().clear();
                     generarTabla("select * from articulo where nombre like 'Refrigeradora%'");
-                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    root.getChildren().addAll(titulo, hbox, tabla);
                     break;
                 case "Otros genericos":
                     root.getChildren().clear();
                     tabla.getColumns().clear();
                     generarTabla("select * from articulo where idarticulo like 'otro%'");
-                    root.getChildren().addAll(titulo, hbox, tabla, regresar);
+                    root.getChildren().addAll(titulo, hbox, tabla);
                     break;
                 default:
                     break;
