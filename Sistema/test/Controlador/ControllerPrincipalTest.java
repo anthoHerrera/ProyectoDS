@@ -48,9 +48,9 @@ public class ControllerPrincipalTest {
 		ControllerPrincipal instance = new ControllerPrincipal();
 		//String expResult = "";
 		String result = instance.verificarLogin(user, pass);
-		assertNotNull( result);
+		assertNotNull(result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		//fail("The test case is a prototype.");
 	}
 	
 }
