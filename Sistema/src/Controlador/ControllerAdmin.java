@@ -42,23 +42,43 @@ public class ControllerAdmin {
                 Articulo coc = cocina.createCocina(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"), result.getString("marca"),
                         result.getDouble("precio"), result.getString("tamano"), result.getString("potenciatotal"), result.getInt("inductores"), result.getString("voltaje"));
                 c.add(coc);
+<<<<<<< HEAD
             } else if (result.getString("nombre").startsWith("Refrigeradora")) {
+=======
+
+            }else if (result.getString("nombre").startsWith("Refrigeradora")) {
+>>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
                 RefrigeradoraFactory refrigeradora = new RefrigeradoraFactory();
                 Articulo refri = refrigeradora.createRefrigeradora(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"),
                         result.getString("marca"), result.getDouble("precio"), result.getInt("cantidadpuertas"), result.getInt("capacidad"), result.getString("filtroagua"));
                 c.add(refri);
+<<<<<<< HEAD
             } else if (result.getString("nombre").startsWith("Lavadora")) {
+=======
+ 
+            }else if (result.getString("nombre").startsWith("Lavadora")) {
+
+>>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
                 LavadoraFactory lavadora = new LavadoraFactory();
                 Articulo lav = lavadora.createLavadora(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"), result.getString("marca"),
                         result.getDouble("precio"), result.getInt("capacidad"), result.getInt("nivelestemperatura"));
                 c.add(lav);
+<<<<<<< HEAD
             } else if (result.getString("idarticulo").startsWith("otro")) {
                 Articulo generico = new ArticuloGenerico(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"),
                         result.getString("marca"), result.getDouble("precio"), result.getString("tamano"), result.getString("potenciatotal"),
                         result.getInt("inductores"), result.getString("voltaje"), result.getInt("cantidadpuertas"), result.getInt("capacidad"),
+=======
+                
+            }else if(result.getString("idarticulo").startsWith("otro")){
+                Articulo generico = new ArticuloGenerico(result.getString("idarticulo"), result.getString("nombre"), result.getString("descripcion"), 
+                        result.getString("marca"), result.getDouble("precio"), result.getString("tamano"),result.getString("potenciatotal"), 
+                        result.getInt("inductores"), result.getString("voltaje"), result.getInt("cantidadpuertas"), result.getInt("capacidad"), 
+>>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
                         result.getString("filtroagua"), result.getInt("nivelestemperatura"));
                 c.add(generico);
             }
+
         }
 
         return c;
@@ -118,6 +138,7 @@ public class ControllerAdmin {
         statement.setBoolean(14, true);
         statement.executeUpdate();
 
+<<<<<<< HEAD
     }
 
 //    public ObservableList<ArticuloLineaBlanca> consultaLavadoras() throws SQLException {
@@ -143,4 +164,7 @@ public class ControllerAdmin {
 //                dc.construirCocina();
 //                c.add(dc.getCocina());
 //            }
+=======
+>>>>>>> 48c5fa9bac48b3e52481a5017aee4f601f3a973e
 }
+
