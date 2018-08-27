@@ -145,9 +145,8 @@ public final class ReporteVentasSemanales implements Reporte{
 		stage.setTitle("Reporte Ventas");
 		stage.showAndWait();
 	}
-	
-	
-	private void showError() {
+
+    private void showError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Se ha producido un error");
@@ -159,6 +158,4 @@ public final class ReporteVentasSemanales implements Reporte{
 		return reportes;
 	}
 
-
-	
 }

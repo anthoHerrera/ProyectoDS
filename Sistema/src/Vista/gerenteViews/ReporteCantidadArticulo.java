@@ -7,6 +7,7 @@ package Vista.gerenteViews;
 
 import Controlador.ControllerGerente;
 import Modelo.Ctes;
+import Modelo.Rarticulo;
 import Modelo.Transaccion;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -29,17 +30,17 @@ import javafx.stage.Stage;
  *
  * @author Anthony777
  */
-class PanelConsultaVentas {
+public class ReporteCantidadArticulo {
     private final VBox root;
     private Label titulo;
     private Button regresar;
     private ControllerGerente controlador;
-    private ObservableList<Transaccion> ventas;
-    private TableView<Transaccion> tabla;
-    private Stage ventaStage;
+    private ObservableList<Rarticulo> narticulo;
+    private TableView<Rarticulo> tabla;
+    private Stage narticuloStage;
     private Scene scene;
 
-    public PanelConsultaVentas() {
+    public ReporteCantidadArticulo() {
         root = new VBox(10);
         setPanes();
         setFunctButtons();
@@ -50,45 +51,50 @@ class PanelConsultaVentas {
         root.setPadding(new Insets(20, 20, 20, 20));
         controlador = new ControllerGerente();
         tabla = new TableView<>();
-        titulo = new Label("Ventas");
+        titulo = new Label("Cantidad de Articulos");
         titulo.setFont(new Font("Cambria", 40));
 
         try {
-            ventas = controlador.consultaVentas();
-            if (ventas != null) {
-                tabla.setItems(ventas);
+            narticulo = controlador.consultaNArticulos();
+            if (narticulo != null) {
+                tabla.setItems(narticulo);
                 tabla.setEditable(false);
                 
-                TableColumn idT = new TableColumn("idTransaccion");
-                idT.setMinWidth(200);
-                idT.setCellValueFactory(
-                        new PropertyValueFactory<>("idTransaccion"));
+                TableColumn id = new TableColumn("idArticulo");
+                id.setMinWidth(200);
+                id.setCellValueFactory(
+                        new PropertyValueFactory<>("idArticulo"));
                 
-                TableColumn type = new TableColumn("tipo");
-                type.setMinWidth(200);
-                type.setCellValueFactory(
-                        new PropertyValueFactory<>("tipo"));
+                TableColumn name = new TableColumn("Nombre");
+                name.setMinWidth(200);
+                name.setCellValueFactory(
+                        new PropertyValueFactory<>("nombre"));
                 
-                TableColumn ide = new TableColumn("idEmpleado");
-                ide.setMinWidth(200);
-                ide.setCellValueFactory(
-                        new PropertyValueFactory<>("idEmpleado"));
+                TableColumn des = new TableColumn("Descripcion");
+                des.setMinWidth(200);
+                des.setCellValueFactory(
+                        new PropertyValueFactory<>("descripcion"));
                 
-                TableColumn idc = new TableColumn("idCliente");
-                idc.setMinWidth(200);
-                idc.setCellValueFactory(
-                        new PropertyValueFactory<>("idCliente"));
+                TableColumn mark = new TableColumn("Marca");
+                mark.setMinWidth(200);
+                mark.setCellValueFactory(
+                        new PropertyValueFactory<>("marca"));
                 
-                TableColumn visible = new TableColumn("isVisible");
-                visible.setMinWidth(200);
-                visible.setCellValueFactory(
-                        new PropertyValueFactory<>("isVisible"));
-                tabla.getColumns().addAll(idT, type, ide, idc, visible);
+                TableColumn price = new TableColumn("Precio");
+                price.setMinWidth(200);
+                price.setCellValueFactory(
+                        new PropertyValueFactory<>("precio"));
+                
+                TableColumn n = new TableColumn("Cantidad");
+                n.setMinWidth(200);
+                n.setCellValueFactory(
+                        new PropertyValueFactory<>("cantidadArticulo"));
+                tabla.getColumns().addAll(id, name, des, mark, price, n);
             }else {
                 showError();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelConsultaVentas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReporteCantidadArticulo.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         regresar = new Button("REGRESAR");
@@ -101,15 +107,15 @@ class PanelConsultaVentas {
     }
 
     private void setFunctButtons() {
-        regresar.setOnAction(e -> ventaStage.close());
+        regresar.setOnAction(e -> narticuloStage.close());
     }
 
     private void setStage() {
-        ventaStage = new Stage();
+        narticuloStage = new Stage();
         scene = new Scene(this.getRoot(), Ctes.APP_WIDHT - 200, Ctes.APP_HEIGHT - 250);
-        ventaStage.setScene(scene);
-        ventaStage.setTitle("Consulta ventas");
-        ventaStage.showAndWait();
+        narticuloStage.setScene(scene);
+        narticuloStage.setTitle("Reporte de cantidad de articulos");
+        narticuloStage.showAndWait();
     }
 
     private VBox getRoot() {
@@ -123,5 +129,4 @@ class PanelConsultaVentas {
         alert.setContentText("El sistema no ha podido mostrar las ventas");
         alert.showAndWait();
     }
-    
 }

@@ -16,12 +16,14 @@ import java.util.logging.Logger;
  * @author Anthony777
  */
 public class ConexionPostgresql {
+
     Connection cnx;
 
     public ConexionPostgresql() {
         try {
             cnx = DriverManager.getConnection("jdbc:postgresql://localhost:5433/lineablancasa",
-                     "postgres", "gabriel22samanes2");
+                    "postgres", "gabriel22samanes2");
+           
         } catch (SQLException ex) {
             Logger.getLogger(ConexionPostgresql.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -60,7 +60,7 @@ class PanelReportes {
 
     private void setFunctButtons() {
         articulos.setOnAction(e -> {
-            showAlert();
+            showNArticulos();
         });
         
         articulos.setOnMouseEntered(e -> {
@@ -74,7 +74,7 @@ class PanelReportes {
         });
         
         ventas.setOnAction(e ->  {
-            showAlert();
+            showVentasXMes();
         });
         
         ventas.setOnMouseEntered(e -> {
@@ -88,7 +88,7 @@ class PanelReportes {
         });
         
         clientes.setOnAction(e -> {
-            showAlert();
+            showClientesXMes();
         });
         
         clientes.setOnMouseEntered(e -> {
@@ -120,6 +120,18 @@ class PanelReportes {
         reporteStage.setScene(scene);
         reporteStage.setTitle("Interfaz de Reportes de Gerente");
         reporteStage.showAndWait();
+    }
+    
+    private void showNArticulos() {
+        ReporteCantidadArticulo panel = new ReporteCantidadArticulo();
+    }
+    
+    private void showVentasXMes() {
+        ReporteVentasXMes panel = new ReporteVentasXMes();
+    }
+    
+    private void showClientesXMes() {
+        ReporteClientesXmes panel = new ReporteClientesXmes();
     }
     
     private void showAlert() {
