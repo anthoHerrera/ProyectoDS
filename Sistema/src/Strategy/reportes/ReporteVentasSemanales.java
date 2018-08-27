@@ -48,8 +48,8 @@ public final class ReporteVentasSemanales implements Reporte{
 	public ReporteVentasSemanales(){
 		root = new VBox(20);
 		
-		setupPanes();
 		generarReporte();
+		setupPanes();
 		setupStage();
 	}
 	
@@ -60,6 +60,17 @@ public final class ReporteVentasSemanales implements Reporte{
 		
 		titulo = new Label("REPORTE VENTAS POR EMPLEADO");
 		titulo.setFont(new Font("Arial",24));
+		
+		cerrar = new Button("Cerrar");
+		cerrar.setPrefSize(160, 80);
+		cerrar.setOnAction(e->stage.close());
+		
+		root.setStyle("-fx-background-color: lavender");
+		root.getChildren().addAll(titulo,tabla,cerrar);
+	}
+	
+	@Override
+	public void generarReporte(){
 		
 		reportes = this.ejecutarQuery();
 		tabla = new TableView<>();
@@ -83,17 +94,6 @@ public final class ReporteVentasSemanales implements Reporte{
 			TotalVendido.setCellValueFactory( new PropertyValueFactory<>("totalVendido"));
 			
 		tabla.getColumns().addAll(idEmpleado,NumTransacciones,TotalVendido);
-		
-		cerrar = new Button("Cerrar");
-		cerrar.setPrefSize(160, 80);
-		cerrar.setOnAction(e->stage.close());
-		
-		root.setStyle("-fx-background-color: lavender");
-		root.getChildren().addAll(titulo,tabla,cerrar);
-	}
-	
-	@Override
-	public void generarReporte(){
 		
 	}
 	
@@ -155,5 +155,10 @@ public final class ReporteVentasSemanales implements Reporte{
         alert.showAndWait();
     }
 
+	public ObservableList<ReporteSemanalClass> getReportes() {
+		return reportes;
+	}
 
+
+	
 }
