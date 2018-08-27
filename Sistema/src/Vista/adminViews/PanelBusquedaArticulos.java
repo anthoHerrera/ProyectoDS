@@ -9,8 +9,10 @@ import Controlador.ControllerAdmin;
 import Modelo.FactoryMethod.Articulo;
 import Modelo.Ctes;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,12 +22,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  *
@@ -37,8 +42,9 @@ public final class PanelBusquedaArticulos {
     private HBox hbox;
     private Label titulo, ingreso;
     private ComboBox<String> cb;
-    private Button regresar, boton;
+    private Button regresar, boton,agregar,modificar,eliminar;
     private ControllerAdmin controlador;
+    private ArrayList<Articulo> lista;
     private ObservableList<Articulo> articulos;
     private TableView<Articulo> tabla;
     private Stage articuloStage;
@@ -69,16 +75,19 @@ public final class PanelBusquedaArticulos {
         tabla = new TableView<>();
 
         hbox = new HBox(5);
-        boton = new Button("Buscar");
+        boton = new Button("Actualizar");
         ingreso = new Label("Ingrese el producto a buscar");
-        hbox.getChildren().addAll(ingreso, cb, boton);
+        
         titulo = new Label("Productos");
         titulo.setFont(new Font("Cambria", 40));
         generarTabla("select * from articulo where idarticulo like '//'");
         regresar = new Button("REGRESAR");
-
+        agregar = new Button("Agregar articulo");
+        modificar = new Button("Modificar articulo");
+        eliminar = new Button("Eliminar articulo");
         regresar.setPrefSize(Ctes.BUT_WIDTH + 60, Ctes.BUT_HEIGHT - 40);
 
+        hbox.getChildren().addAll(ingreso, cb, boton,agregar,modificar,eliminar);
         root.setStyle("-fx-background-color: lavender");
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(titulo, hbox,tabla,regresar);
@@ -93,7 +102,8 @@ public final class PanelBusquedaArticulos {
     private void generarTabla(String comando) {
 
         try {
-            articulos = controlador.consultaArticulos(comando);
+            lista = controlador.consultaArticulos(comando);
+            articulos = FXCollections.observableArrayList(lista);
             if (articulos != null) {
                 tabla.setItems(articulos);
                 tabla.setEditable(false);
@@ -164,6 +174,7 @@ public final class PanelBusquedaArticulos {
                         new PropertyValueFactory<>("nivelesTemperatura"));
 
                 tabla.getColumns().addAll(id,nombre, descripcion, marca, precio, tamano, potencia, inductores, voltaje, puertas, capacidad, filtro, temp);
+                
             } else {
                 showError();
             }
@@ -171,7 +182,16 @@ public final class PanelBusquedaArticulos {
             Logger.getLogger(PanelBusquedaArticulos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    private void manejarActivacion(MouseEvent e){
+        eliminar.setDisable(false);
+        modificar.setDisable(false);
+        Callback<TableView<Articulo>,TableRow<Articulo>> a = tabla.getRowFactory();
+        for(Articulo art : tabla.getItems()){
+            
+        }
+    }
+    
     public VBox getRoot() {
         return root;
     }
@@ -179,6 +199,9 @@ public final class PanelBusquedaArticulos {
     private void setUpButtons() {
         regresar.setOnAction(e -> articuloStage.close());
         boton.setOnAction(e -> manejarBuscar());
+        agregar.setOnAction(e -> new PanelAgregaArticulos());
+        eliminar.setOnAction(e -> new PanelEliminarArticulos(this));
+        modificar.setOnAction(e -> new PanelModificarArticulos(this));
     }
 
     private void manejarBuscar() {
@@ -238,5 +261,15 @@ public final class PanelBusquedaArticulos {
         alert.setContentText("El sistema requiere que se seleccione una opcion");
         alert.showAndWait();
     }
+
+    public ArrayList<Articulo> getLista() {
+        return lista;
+    }
+
+    public Stage getArticuloStage() {
+        return articuloStage;
+    }
+    
+    
 
 }
