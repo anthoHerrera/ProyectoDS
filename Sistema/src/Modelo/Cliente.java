@@ -10,10 +10,11 @@ package Modelo;
  * @author Anthony777
  */
 public class Cliente {
-    private String cedula, nombre, telefono;
+    private Cedula cedula;
+    private String nombre, telefono;
     private boolean isVisible;
 
-    public Cliente(String cedula, String nombre, String telefono, boolean isVisible) {
+    public Cliente(Cedula cedula, String nombre, String telefono, boolean isVisible) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -21,11 +22,11 @@ public class Cliente {
     }
 
     public String getCedula() {
-        return cedula;
+        return cedula.getCedula();
     }
 
     public void setCedula(String cedula) {
-        this.cedula = cedula;
+        this.cedula = new Cedula(cedula);
     }
 
     public String getNombre() {

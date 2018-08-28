@@ -10,22 +10,22 @@ package Modelo;
  * @author Anthony777
  */
 public class Usuario {
-    private String cedula;
+    private Cedula cedula;
     private String usuario;
     private String clave;
 
-    public Usuario(String cedula, String usuario, String clave) {
+    public Usuario(Cedula cedula, String usuario, String clave) {
         this.cedula = cedula;
         this.usuario = usuario;
         this.clave = clave;
     }
 
     public String getCedula() {
-        return cedula;
+        return cedula.getCedula();
     }
 
     public void setCedula(String cedula) {
-        this.cedula = cedula;
+        this.cedula = new Cedula(cedula);
     }
 
     public String getUsuario() {

@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Gerente extends Usuario {
     
-    public Gerente(String cedula, String usuario, String clave) {
+    public Gerente(Cedula cedula, String usuario, String clave) {
         super(cedula, usuario, clave);
     }
     

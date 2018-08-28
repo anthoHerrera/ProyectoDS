@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.Cedula;
 import Modelo.Cliente;
 import Modelo.Rarticulo;
 import Modelo.Transaccion;
@@ -34,7 +35,7 @@ public class ControllerGerente {
         ResultSet result = statement.executeQuery();
                 
         while(result.next()) {
-            Cliente client = new Cliente(result.getString("cedula"), result.getString("nombre"), 
+            Cliente client = new Cliente(new Cedula(result.getString("cedula")), result.getString("nombre"), 
                     result.getString("cedula"), result.getBoolean("isVisible"));
             c.add(client);
         }
@@ -99,7 +100,7 @@ public class ControllerGerente {
         ResultSet result = statement.executeQuery();
                 
         while(result.next()) {
-            Cliente client = new Cliente(result.getString("cedula"), result.getString("nombre"), 
+            Cliente client = new Cliente(new Cedula(result.getString("cedula")), result.getString("nombre"), 
                     result.getString("cedula"), result.getBoolean("isVisible"));
             c.add(client);
         }
