@@ -6,6 +6,7 @@
 package Vista.vendedorViews;
 
 import Controlador.ConexionPostgresql;
+import Modelo.Cedula;
 import Modelo.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -129,7 +130,7 @@ public class CrearCliente {
     }
     
     public Cliente crearCliente(){
-        return new Cliente(cedula.getText(), nombre.getText(),telefono.getText(), true);
+        return new Cliente(new Cedula(cedula.getText()), nombre.getText(),telefono.getText(), true);
     }
     
     public void cargarVendedores() {
