@@ -45,14 +45,15 @@ public class ControllerAdminTest {
 	@Test
 	public void testConsultaArticulos() throws Exception {
 		System.out.println("consultaArticulos");
-		String comando = "";
+		String comando = "select * from articulo";
 		ControllerAdmin instance = new ControllerAdmin();
-		ArrayList<Articulo> expResult = instance.consultaArticulos(comando);
+		ArrayList<Articulo> expResult = null;
 		ArrayList<Articulo> result = instance.consultaArticulos(comando);
-		assertEquals(expResult, result);
+		assertNotEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
 		
 	}
+
 
 	/**
 	 * Test of cuentaArticulos method, of class ControllerAdmin.
@@ -60,11 +61,12 @@ public class ControllerAdminTest {
 	@Test
 	public void testCuentaArticulos() throws Exception {
 		System.out.println("cuentaArticulos");
-		String comando = "";
+		String comando = "select count(idarticulo) as count from articulo";
 		ControllerAdmin instance = new ControllerAdmin();
+		String expResult = "";
 		String result = instance.cuentaArticulos(comando);
-		assertNull(result);
-		
+		assertNotNull(result);
+		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	

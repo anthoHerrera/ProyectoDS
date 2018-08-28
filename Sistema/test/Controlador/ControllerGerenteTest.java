@@ -72,5 +72,47 @@ public class ControllerGerenteTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+
+	/**
+	 * Test of consultaClientes method, of class ControllerGerente.
+	 */
+	@Test
+	public void testConsultaClientes() throws Exception {
+		System.out.println("consultaClientes");
+		ControllerGerente instance = new ControllerGerente();
+		ObservableList<Cliente> expResult = null;
+		ObservableList<Cliente> result = instance.consultaClientes();
+		assertEquals(expResult, result);
+		// TODO review the generated test code and remove the default call to fail.
+		fail("The test case is a prototype.");
+	}
+
+	/**
+	 * Test of consultaVentas method, of class ControllerGerente.
+	 */
+	@Test
+	public void testConsultaVentas() throws Exception {
+		System.out.println("consultaVentas");
+		ControllerGerente instance = new ControllerGerente();
+		ObservableList<Transaccion> expResult = null;
+		ObservableList<Transaccion> result = instance.consultaVentas();
+		assertEquals(expResult, result);
+		// TODO review the generated test code and remove the default call to fail.
+		fail("The test case is a prototype.");
+	}
+
+	/**
+	 * Test of consultaNArticulos method, of class ControllerGerente.
+	 */
+	@Test
+	public void testConsultaNArticulos() throws Exception {
+		System.out.println("consultaNArticulos");
+		ControllerGerente instance = new ControllerGerente();
+		ObservableList<Rarticulo> expResult = null;
+		ObservableList<Rarticulo> result = instance.consultaNArticulos();
+		assertEquals(expResult, result);
+		// TODO review the generated test code and remove the default call to fail.
+		fail("The test case is a prototype.");
+	}
     
 }
