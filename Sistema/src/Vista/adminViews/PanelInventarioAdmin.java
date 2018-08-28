@@ -71,10 +71,8 @@ public final class PanelInventarioAdmin {
         actualizar.setPrefSize(Ctes.BUT_WIDTH + 10, Ctes.BUT_HEIGHT - 10);
         buscar.setPrefSize(Ctes.BUT_WIDTH + 10, Ctes.BUT_HEIGHT - 10);
         
-        buscar.setOnAction(e-> new PanelBusquedaArticulos());
+        buscar.setOnAction(e-> new PanelArticulos());
         agregar.setOnAction(e -> new PanelAgregaArticulos());
-//        eliminar.setOnAction(e -> showAlert());
-//        actualizar.setOnAction(e -> showAlert());
         
         
     }

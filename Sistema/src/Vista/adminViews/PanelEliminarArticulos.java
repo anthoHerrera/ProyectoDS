@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  * @author JuanJose FS
  */
 public class PanelEliminarArticulos {
-    private PanelBusquedaArticulos panel;
+    private PanelArticulos panel;
     private ComboBox<String> combo;
     private BorderPane root;
     private HBox hbox;
@@ -34,7 +34,7 @@ public class PanelEliminarArticulos {
     private Stage eliminarStage;
     private Scene scene;
     
-    public PanelEliminarArticulos(PanelBusquedaArticulos panel){
+    public PanelEliminarArticulos(PanelArticulos panel){
         this.panel = panel;
         root = new BorderPane();
         controlador = new ControllerAdmin();

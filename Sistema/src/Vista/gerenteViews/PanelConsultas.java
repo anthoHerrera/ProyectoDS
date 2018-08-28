@@ -6,7 +6,7 @@
 package Vista.gerenteViews;
 
 import Modelo.Ctes;
-import Vista.adminViews.PanelBusquedaArticulos;
+import Vista.adminViews.PanelArticulos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -127,7 +127,7 @@ class PanelConsultas {
     }
     
     private void showArticulos() {
-        PanelBusquedaArticulos panel = new PanelBusquedaArticulos();
+        PanelConsultaArticulos panel = new PanelConsultaArticulos();
     }
 
     private void showVentas() {
