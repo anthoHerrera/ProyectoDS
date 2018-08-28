@@ -7,6 +7,7 @@ package Vista.vendedorViews;
 
 import Vista.vendedorViews.CrearCliente;
 import Modelo.Ctes;
+import Vista.SceneOrganizer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -21,13 +22,13 @@ import javafx.scene.text.Font;
  * @author JuanJose FS
  */
 public class PanelVendedor {
-    private VBox root;
+    private final VBox root;
     private HBox hbox;
-    private Button cotizacion, cliente, venta;
+    private Button cotizacion, cliente, venta, cerrarSesion;
     private Label titulo;
     
     public PanelVendedor(){
-        root = new VBox();
+        root = new VBox(10);
         setUp();
     }
     
@@ -37,20 +38,22 @@ public class PanelVendedor {
         titulo = new Label("Vendedor");
 	titulo.setFont(new Font("Comic Sans",40));
         
-        cotizacion = new Button("Cotizacion");
-        cliente = new Button("Registrar cliente");
-        venta = new Button("Venta");
+        cotizacion = new Button("COTIZACION");
+        cliente = new Button("REGISTRAR CLIENTE");
+        venta = new Button("VENTA");
+        cerrarSesion = new Button("CERRAR SESION");
         
         setupFunctButtons();
         
         cotizacion.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         cliente.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         venta.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
+        cerrarSesion.setPrefSize(Ctes.BUT_WIDTH , Ctes.BUT_HEIGHT);
         
         root.setAlignment(Pos.CENTER);
         root.setStyle("-fx-background-color: lavender");
         root.getChildren().addAll(titulo);
-        root.getChildren().addAll(cotizacion,cliente,venta);
+        root.getChildren().addAll(cotizacion,cliente,venta, cerrarSesion);
     }
 
     public VBox getRoot() {
@@ -70,6 +73,7 @@ public class PanelVendedor {
         cotizacion.setOnAction(e->showAlert());
         cliente.setOnAction(e->crearCliente());
         venta.setOnAction(e->showAlert());
+        cerrarSesion.setOnAction(e -> SceneOrganizer.setupScenePrincipal());
     }
     
     private void crearCliente() {

@@ -7,6 +7,7 @@ package Vista.superViews;
 
 import Modelo.Ctes;
 import Strategy.reportes.ReporteVentasSemanales;
+import Vista.SceneOrganizer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -43,7 +44,7 @@ public final class PanelSuper {
         transacciones = new Button("TRANSACCIONES");
 		reportes = new Button("REPORTES");
         bodega = new Button("BODEGA");
-        salir = new Button("SALIR");
+        salir = new Button("CERRAR SESION");
 
         inventario.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
 		reportes.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
@@ -61,7 +62,7 @@ public final class PanelSuper {
 
         inventario.setOnAction(e -> new PanelInventarioSuper(this));
 		reportes.setOnAction(e-> new ReporteVentasSemanales());
-        salir.setOnAction(e -> Platform.exit());
+        salir.setOnAction(e -> SceneOrganizer.setupScenePrincipal());
     }
 
     public Pane getRoot() {
