@@ -20,9 +20,9 @@ import static org.junit.Assert.*;
  *
  * @author Anthony777
  */
-public class ControllerGerente_2_Test {
+public class ControllerGerente2Test {
     
-    public ControllerGerente_2_Test() {
+    public ControllerGerente2Test() {
     }
     
     @BeforeClass
@@ -74,7 +74,7 @@ public class ControllerGerente_2_Test {
     public void testConsultaNArticulos() throws Exception {
         System.out.println("consultaNArticulos");
         ControllerGerente instance = new ControllerGerente();
-        ObservableList<Rarticulo> expResult = instance.consultaNArticulos();;
+        ObservableList<Rarticulo> expResult = instance.consultaNArticulos();
         ObservableList<Rarticulo> result = instance.consultaNArticulos();
         assertNotEquals(expResult, result);
         

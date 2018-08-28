@@ -6,7 +6,6 @@
 package Controlador;
 
 import Modelo.Cliente;
-import Modelo.Rarticulo;
 import Modelo.Transaccion;
 import javafx.collections.ObservableList;
 import org.junit.After;
