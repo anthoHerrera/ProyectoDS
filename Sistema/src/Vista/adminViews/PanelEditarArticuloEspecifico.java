@@ -6,7 +6,11 @@
 package Vista.adminViews;
 
 import Controlador.ControllerAdmin;
-import Modelo.Ctes;
+import Modelo.FactoryMethod.Articulo;
+import Modelo.FactoryMethod.ArticuloGenerico;
+import Modelo.FactoryMethod.CocinaInduccion;
+import Modelo.FactoryMethod.Lavadora;
+import Modelo.FactoryMethod.Refrigeradora;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,8 +26,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
-
 /**
  *
  * @author JuanJose FS
@@ -36,21 +37,22 @@ public class PanelEditarArticuloEspecifico {
     private Label titulo,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12;
     private TextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12;
     private Button agregar,regresar;
-    private Scene scene;
     private ControllerAdmin controlador;
     private PanelModificarArticulos p;
+    private Articulo a;
     
-    public PanelEditarArticuloEspecifico(PanelModificarArticulos p) {
+    public PanelEditarArticuloEspecifico(PanelModificarArticulos p,Articulo a) {
         root = new VBox(20);
+        this.a = a;
         this.p = p;
-        setUp();
+        setUp(a);
     }
     
     public void setScene() {
         p.getModificarStage().setScene(p.getScene());
     }
 
-    public void setUp() {
+    public void setUp(Articulo a) {
         controlador = new ControllerAdmin();
         root.setPadding(new Insets(10, 10, 10, 10));
 
@@ -66,11 +68,28 @@ public class PanelEditarArticuloEspecifico {
         l8 = new Label("Voltaje:");l9 = new Label("Cantidad de puertas:");l10 = new Label("Capacidad:");
         l11 = new Label("Filtro de agua:");l12 = new Label("Niveles de temperatura:");
         
-        t1 = new TextField();t2 = new TextField();t3 = new TextField();t4 = new TextField();
+        t1 = new TextField(a.getNombre());t2 = new TextField(a.getDescripcion());t3 = new TextField(a.getMarca());t4 = new TextField(String.valueOf(a.getPrecio()));
         t5 = new TextField();t6 = new TextField();t7 = new TextField();t8 = new TextField();
         t9 = new TextField();t10 = new TextField();t11 = new TextField();t12 = new TextField();
         
-        agregar = new Button("Agregar articulo");
+        if(a instanceof ArticuloGenerico){
+            ArticuloGenerico gen = (ArticuloGenerico)a;
+            t5.setText(gen.getTamano());t6.setText(gen.getPotenciaTotal());t7.setText(String.valueOf(gen.getInductores()));t8.setText(gen.getVoltaje());
+            t9.setText(String.valueOf(gen.getCantidadPuertas()));t10.setText(String.valueOf(gen.getCapacidad()));t11.setText(gen.getFiltroAgua());t12.setText(String.valueOf(gen.getNivelesTemperatura()));  
+        }
+        else if(a instanceof CocinaInduccion){
+            CocinaInduccion coc = (CocinaInduccion)a;
+            t5.setText(coc.getTamano());t6.setText(coc.getPotenciaTotal());t7.setText(String.valueOf(coc.getInductores()));t8.setText(coc.getVoltaje());
+        }
+        else if(a instanceof Refrigeradora){
+            Refrigeradora ref = (Refrigeradora)a;
+            t9.setText(String.valueOf(ref.getCantidadPuertas()));t10.setText(String.valueOf(ref.getCapacidad()));t11.setText(ref.getFiltroAgua());
+        }
+        else if(a instanceof Lavadora){
+            Lavadora lav = (Lavadora)a;
+            t10.setText(String.valueOf(lav.getCapacidad()));t12.setText(String.valueOf(lav.getNivelesTemperatura()));
+        }
+        agregar = new Button("Modificar articulo");
         regresar = new Button("Regresar");
         
         h1.getChildren().addAll(l1,t1);h2.getChildren().addAll(l2,t2);h3.getChildren().addAll(l3,t3);h4.getChildren().addAll(l4,t4);
@@ -86,7 +105,7 @@ public class PanelEditarArticuloEspecifico {
         
         agregar.setOnAction(e-> {
             try {
-                manejarIngreso();
+                manejarEdicion();
             } catch (SQLException ex) {
                 Logger.getLogger(PanelAgregaArticulos.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -121,10 +140,10 @@ public class PanelEditarArticuloEspecifico {
 
     }
 
-    private void manejarIngreso() throws SQLException{
+    private void manejarEdicion() throws SQLException{
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText("La informacion esta correcta?");
-        a.setHeaderText("Esta a punto de ingresar este articulo");
+        a.setHeaderText("Esta a punto de modificar este articulo");
         a.setTitle("Confirmacion");
         a.showAndWait();
         if(!a.getResult().getButtonData().isCancelButton()){

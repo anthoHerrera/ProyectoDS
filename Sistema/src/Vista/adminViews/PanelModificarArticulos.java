@@ -7,7 +7,6 @@ package Vista.adminViews;
 
 import Controlador.ControllerAdmin;
 import Modelo.Ctes;
-import static Modelo.Ctes.APP_WIDHT;
 import Modelo.FactoryMethod.Articulo;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -76,7 +75,11 @@ public class PanelModificarArticulos {
     
     private void manejarModificar() throws SQLException{
         if(combo.getValue()!=null){
-            setScene();
+            for(Articulo art : panel.getLista()){
+            if(combo.getValue().equals(art.getIdArticulo())){
+                setScene(art);
+            }
+        }
 //                showInfo(combo.getValue());
 //                eliminarStage.close();
         }else{
@@ -84,8 +87,8 @@ public class PanelModificarArticulos {
         }
     }
     
-    private void setScene(){
-        PanelEditarArticuloEspecifico p = new PanelEditarArticuloEspecifico(this);
+    private void setScene(Articulo a){
+        PanelEditarArticuloEspecifico p = new PanelEditarArticuloEspecifico(this,a);
         Scene scene2 = new Scene(p.getRoot(), Ctes.APP_WIDHT - 250, Ctes.APP_HEIGHT);
         modificarStage.setScene(scene2);
     }

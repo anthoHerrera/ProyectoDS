@@ -71,8 +71,43 @@ public class ControllerAdmin {
         statement.executeUpdate();
     }
     
-    public void modificarArticulo(String id) throws SQLException{
+    public void modificarArticulo(String id,List<String> atributos) throws SQLException{
         PreparedStatement statement = cnx.getCnx().prepareStatement("UPDATE articulo SET idarticulo=?, nombre=?, descripcion=?, marca=?, precio=?, tamano=?, potenciatotal=?, inductores=?, voltaje=?, cantidadpuertas=?, capacidad=?, filtroagua=?, nivelestemperatura=?, isvisible=? WHERE idarticulo='"+id+"'");
+        statement.setString(1, id);
+        statement.setString(2, atributos.get(0));
+        statement.setString(3, atributos.get(1));
+        statement.setString(4, atributos.get(2));
+        if (atributos.get(3).isEmpty()) {
+            statement.setDouble(5, 0);
+        } else {
+            statement.setDouble(5, Double.parseDouble(atributos.get(3)));
+        }
+        statement.setString(6, atributos.get(4));
+        statement.setString(7, atributos.get(5));
+        if (atributos.get(6).isEmpty()) {
+            statement.setInt(8, 0);
+        } else {
+            statement.setInt(8, Integer.parseInt(atributos.get(6)));
+        }
+        statement.setString(9, atributos.get(7));
+        if (atributos.get(8).isEmpty()) {
+            statement.setInt(10, 0);
+        } else {
+            statement.setInt(10, Integer.parseInt(atributos.get(8)));
+        }
+        if (atributos.get(9).isEmpty()) {
+            statement.setInt(11, 0);
+        } else {
+            statement.setInt(11, Integer.parseInt(atributos.get(9)));
+        }
+        statement.setString(12, atributos.get(10));
+        if (atributos.get(11).isEmpty()) {
+            statement.setInt(13, 0);
+        } else {
+            statement.setInt(13, Integer.parseInt(atributos.get(11)));
+        }
+        statement.setBoolean(14, true);
+        statement.executeUpdate();
         statement.executeUpdate();
     }
 
