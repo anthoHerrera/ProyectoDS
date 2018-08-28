@@ -20,7 +20,7 @@ public abstract class TarjetaCredito implements TipoDePago{
 		
 	}
 	
-	abstract void validateCredentials();
+	abstract boolean validateCredentials(String numeroTarjeta);
 	abstract void confirmPayment();
 	
 	

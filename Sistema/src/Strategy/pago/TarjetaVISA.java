@@ -9,13 +9,14 @@ public class TarjetaVISA extends TarjetaCredito{
 
 	
 	@Override
-	void validateCredentials() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	boolean validateCredentials(String numeroTarjeta) {
+		boolean isNumeric = numeroTarjeta.matches("-?\\d+(\\.\\d+)?");
+		return numeroTarjeta.length() == 16 && isNumeric;
 	}
 
 	@Override
 	void confirmPayment() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		System.out.println("Pago Realizado con exito.");
 	}
 	
 }
