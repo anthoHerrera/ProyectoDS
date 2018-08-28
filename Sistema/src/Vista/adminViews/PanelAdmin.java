@@ -7,7 +7,7 @@ package Vista.adminViews;
 
 import Modelo.Ctes;
 import Vista.SceneOrganizer;
-import javafx.application.Platform;
+import Vista.gerenteViews.PanelConsultaVentas;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -55,7 +55,8 @@ public final class PanelAdmin {
         transacciones.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
         salir.setPrefSize(Ctes.BUT_WIDTH, Ctes.BUT_HEIGHT);
 
-        inventario.setOnAction(e -> new PanelInventarioAdmin());
+        inventario.setOnAction(e -> new PanelArticulos());
+        transacciones.setOnAction(e -> new PanelVentas());
         salir.setOnAction(e -> SceneOrganizer.setupScenePrincipal());
     }
 

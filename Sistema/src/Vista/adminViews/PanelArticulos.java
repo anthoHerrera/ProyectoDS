@@ -36,7 +36,7 @@ import javafx.util.Callback;
  *
  * @author Anthony777
  */
-public final class PanelBusquedaArticulos {
+public final class PanelArticulos {
 
     private final VBox root;
     private HBox hbox;
@@ -50,7 +50,7 @@ public final class PanelBusquedaArticulos {
     private Stage articuloStage;
     private Scene scene;
 
-    public PanelBusquedaArticulos() {
+    public PanelArticulos() {
         root = new VBox(10);
         setUpComboBoxes();
         setUp();
@@ -177,7 +177,7 @@ public final class PanelBusquedaArticulos {
                 showError();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelBusquedaArticulos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelArticulos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

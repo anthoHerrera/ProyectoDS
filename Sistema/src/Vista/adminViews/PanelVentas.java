@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista.gerenteViews;
+package Vista.adminViews;
 
+import Vista.gerenteViews.*;
 import Controlador.ControllerGerente;
 import Modelo.Ctes;
 import Modelo.Transaccion;
@@ -29,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author Anthony777
  */
-public class PanelConsultaVentas {
+public class PanelVentas {
     private final VBox root;
     private Label titulo;
     private Button regresar;
@@ -39,7 +40,7 @@ public class PanelConsultaVentas {
     private Stage ventaStage;
     private Scene scene;
 
-    public PanelConsultaVentas() {
+    public PanelVentas() {
         root = new VBox(10);
         setPanes();
         setFunctButtons();
@@ -88,7 +89,7 @@ public class PanelConsultaVentas {
                 showError();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelConsultaVentas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         regresar = new Button("REGRESAR");
