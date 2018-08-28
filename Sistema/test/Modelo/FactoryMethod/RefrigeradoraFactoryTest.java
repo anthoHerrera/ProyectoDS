@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author USER
+ * @author Anthony777
  */
 public class RefrigeradoraFactoryTest {
     
