@@ -6,6 +6,7 @@
 package Vista.gerenteViews;
 
 import Modelo.Ctes;
+import Strategy.reportes.ReporteVentasSemanales;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -44,7 +45,7 @@ class PanelReportes {
         titulo.setFont(Font.font("Cambria", 32));
         
         articulos = new Button("CANTIDAD DE ARTICULOS");
-        ventas = new Button("VENTAS POR MES");
+        ventas = new Button("VENTAS SEMANALES");
         clientes = new Button("CLIENTES POR MES");        
         regresar = new Button("REGRESAR");
                 
@@ -74,7 +75,7 @@ class PanelReportes {
         });
         
         ventas.setOnAction(e ->  {
-            showVentasXMes();
+            showVentasSemanales();
         });
         
         ventas.setOnMouseEntered(e -> {
@@ -126,8 +127,8 @@ class PanelReportes {
         ReporteCantidadArticulo panel = new ReporteCantidadArticulo();
     }
     
-    private void showVentasXMes() {
-        ReporteVentasXMes panel = new ReporteVentasXMes();
+    private void showVentasSemanales() {
+        ReporteVentasSemanales panel = new ReporteVentasSemanales();
     }
     
     private void showClientesXMes() {
