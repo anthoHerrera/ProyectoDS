@@ -63,7 +63,7 @@ public class ControllerAdminTest {
 		System.out.println("cuentaArticulos");
 		String comando = "select count(idarticulo) as count from articulo";
 		ControllerAdmin instance = new ControllerAdmin();
-		String expResult = "";
+		
 		String result = instance.cuentaArticulos(comando);
 		assertNotNull(result);
 		// TODO review the generated test code and remove the default call to fail.
