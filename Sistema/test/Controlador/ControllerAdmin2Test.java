@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.FactoryMethod.Articulo;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,9 +19,9 @@ import static org.junit.Assert.*;
  *
  * @author gabpa
  */
-public class ControllerAdminTest {
+public class ControllerAdmin2Test {
 	
-	public ControllerAdminTest() {
+	public ControllerAdmin2Test() {
 	}
 	
 	@BeforeClass
@@ -40,22 +41,17 @@ public class ControllerAdminTest {
 	}
 
 	/**
-	 * Test of consultaArticulos method, of class ControllerAdmin.
+	 * Test of cuentaArticulos method, of class ControllerAdmin.
 	 */
 	@Test
-	public void testConsultaArticulos() throws Exception {
-		System.out.println("consultaArticulos");
-		String comando = "select * from articulo";
+	public void testCuentaArticulos() throws Exception {
+		System.out.println("cuentaArticulos");
+		String comando = "select count(idarticulo) as count from articulo";
 		ControllerAdmin instance = new ControllerAdmin();
-		ArrayList<Articulo> expResult = null;
-		ArrayList<Articulo> result = instance.consultaArticulos(comando);
-		assertNotEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
 		
+		String result = instance.cuentaArticulos(comando);
+		assertNotNull(result);
+		// TODO review the generated test code and remove the default call to fail.
 	}
-
-
-	
-
 	
 }
